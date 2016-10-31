@@ -1,0 +1,12 @@
+<h1>{{title}}s</h1>
+<h5>Hello {{name}} your selected recipe is <span *ngIf="selectedRecipe">{{selectedRecipe.name}}</span></h5>
+
+<ul>
+        <li *ngFor="let recipe of recipes; let index = index" [class.yo]="recipe === selectedRecipe">
+            <input type="checkbox"  (change)="logIndex(index)">
+            <label>Recipe: </label>
+            <input [(ngModel)]="recipe.name" placeholder="Recipe">
+            {{recipe.name}}
+        </li>
+</ul>
+
