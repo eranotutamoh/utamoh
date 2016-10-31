@@ -10,7 +10,7 @@ export class RecipeName {
     templateUrl: 'html/recipes.html',
     styles: [`
     .yo {
-      background-color: orange !important;
+      background-color: red !important;
       color: white;
     } `]
 

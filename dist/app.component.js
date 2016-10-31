@@ -33,7 +33,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'html/recipes.html',
-            styles: ["\n    .yo {\n      background-color: orange !important;\n      color: white;\n    } "]
+            styles: ["\n    .yo {\n      background-color: red !important;\n      color: white;\n    } "]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
