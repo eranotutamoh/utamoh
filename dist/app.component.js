@@ -8,19 +8,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+const core_1 = require('@angular/core');
+let AppComponent = class AppComponent {
+    constructor() {
         this.title = 'Recipe Database';
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'recipes-app',
-            template: "\n        <nav>\n            <a routerLink=\"/recipes\">Recipes</a>\n            <a routerLink=\"/search\">Search</a>\n        </nav>\n        <section class=mid>\n            <h1>{{title}}</h1>\n            <router-outlet></router-outlet>            \n        </section>\n        <section class=right></section>\n            \n      "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
-}());
+};
+AppComponent = __decorate([
+    core_1.Component({
+        selector: 'recipes-app',
+        template: `
+        <nav>
+            <a routerLink="/recipes">Recipes</a>
+            <a routerLink="/search">Search</a>
+        </nav>
+        <section class=mid>
+            <h1>{{title}}</h1>
+            <router-outlet></router-outlet>            
+        </section>
+        <section class=right></section>
+            
+      `
+    }), 
+    __metadata('design:paramtypes', [])
+], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

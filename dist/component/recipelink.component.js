@@ -8,24 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var recipename_1 = require('../abstract/recipename');
-var RecLinkComp = (function () {
-    function RecLinkComp() {
+const core_1 = require('@angular/core');
+const recipename_1 = require('../abstract/recipename');
+let RecLinkComp = class RecLinkComp {
+    constructor() {
         this.recipe = recipename_1.RecName;
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], RecLinkComp.prototype, "recipe", void 0);
-    RecLinkComp = __decorate([
-        core_1.Component({
-            selector: 'rec-link',
-            template: "<div *ngIf=\"recipe\"><a href=\"{{recipe._id}}\">{{recipe.name}}</a></div>\n                "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], RecLinkComp);
-    return RecLinkComp;
-}());
+};
+__decorate([
+    core_1.Input(), 
+    __metadata('design:type', Object)
+], RecLinkComp.prototype, "recipe", void 0);
+RecLinkComp = __decorate([
+    core_1.Component({
+        selector: 'rec-link',
+        template: `<div *ngIf="recipe"><a href="{{recipe._id}}">{{recipe.name}}</a></div>
+                `
+    }), 
+    __metadata('design:paramtypes', [])
+], RecLinkComp);
 exports.RecLinkComp = RecLinkComp;
 //# sourceMappingURL=recipelink.component.js.map
