@@ -15,6 +15,11 @@ import { RecNameService } from './service/recipenames.service';
                     FormsModule,
                     RouterModule.forRoot([
                     {
+                        path: '',
+                        redirectTo: '/search',
+                        pathMatch: 'full'
+                    },
+                    {
                         path: 'recipes',
                         component: RecComp
                     },

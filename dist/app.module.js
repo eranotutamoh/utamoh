@@ -26,6 +26,11 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule.forRoot([
                     {
+                        path: '',
+                        redirectTo: '/search',
+                        pathMatch: 'full'
+                    },
+                    {
                         path: 'recipes',
                         component: recipes_component_1.RecComp
                     },
