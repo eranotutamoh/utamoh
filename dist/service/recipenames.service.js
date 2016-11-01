@@ -14,6 +14,10 @@ let RecNameService = class RecNameService {
     getRecNames() {
         return Promise.resolve(mocknames_1.RECNAMES);
     }
+    getRecDetail(id) {
+        return this.getRecNames()
+            .then(data => data.find(recName => recName._id === id));
+    }
 };
 RecNameService = __decorate([
     core_1.Injectable(), 

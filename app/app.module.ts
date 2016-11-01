@@ -7,6 +7,7 @@ import { AppComponent }  from './app.component';
 import {RecLinkComp}     from './component/recipelink.component';
 import { RecComp }   from './component/recipes.component';
 import { RecSearchComp }   from './component/recipesearch.component';
+import { RecDetailComp }   from './component/recipedetail.component';
 import { RecNameService } from './service/recipenames.service';
 
 
@@ -26,6 +27,10 @@ import { RecNameService } from './service/recipenames.service';
                     {
                         path: 'search',
                         component: RecSearchComp
+                    },
+                    {
+                        path: 'recipe/:id',
+                        component: RecDetailComp
                     }
                     ])],
     declarations: [ AppComponent,

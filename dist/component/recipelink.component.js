@@ -22,7 +22,7 @@ __decorate([
 RecLinkComp = __decorate([
     core_1.Component({
         selector: 'rec-link',
-        template: `<div *ngIf="recipe"><a href="{{recipe._id}}">{{recipe.name}}</a></div>
+        template: `<div *ngIf="recipe"><a routerLink="recipe/:{{recipe._id}}">{{recipe.name}}</a></div>
                 `
     }), 
     __metadata('design:paramtypes', [])

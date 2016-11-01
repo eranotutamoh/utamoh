@@ -16,6 +16,7 @@ const app_component_1 = require('./app.component');
 const recipelink_component_1 = require('./component/recipelink.component');
 const recipes_component_1 = require('./component/recipes.component');
 const recipesearch_component_1 = require('./component/recipesearch.component');
+const recipedetail_component_1 = require('./component/recipedetail.component');
 const recipenames_service_1 = require('./service/recipenames.service');
 let AppModule = class AppModule {
 };
@@ -36,6 +37,10 @@ AppModule = __decorate([
                 {
                     path: 'search',
                     component: recipesearch_component_1.RecSearchComp
+                },
+                {
+                    path: 'recipe/:id',
+                    component: recipedetail_component_1.RecDetailComp
                 }
             ])],
         declarations: [app_component_1.AppComponent,
