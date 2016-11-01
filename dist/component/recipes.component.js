@@ -8,38 +8,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var recipenames_service_1 = require('../service/recipenames.service');
-var RecComp = (function () {
-    function RecComp(recNameService) {
+const core_1 = require('@angular/core');
+const recipenames_service_1 = require('../service/recipenames.service');
+let RecComp = class RecComp {
+    constructor(recNameService) {
         this.recNameService = recNameService;
         this.title = 'Recipe';
         this.name = 'Virgil Hanover';
     }
-    RecComp.prototype.ngOnInit = function () {
+    ngOnInit() {
         this.getRecNames();
-    };
-    RecComp.prototype.logIndex = function (idx) {
+    }
+    logIndex(idx) {
         console.log('Recipe', this.recipes[idx]._id, this.recipes[idx].name);
         this.onSelect(this.recipes[idx]);
-    };
+    }
     ;
-    RecComp.prototype.onSelect = function (recipe) {
+    onSelect(recipe) {
         this.selectedRecipe = recipe;
-    };
-    RecComp.prototype.getRecNames = function () {
-        var _this = this;
-        this.recNameService.getRecNames().then(function (data) { return _this.recipes = data; });
-    };
-    RecComp = __decorate([
-        core_1.Component({
-            selector: 'recipes',
-            templateUrl: 'html/recipes.html',
-            styles: ["\n    .yo {\n      background-color: greenyellow !important;\n      color: white;\n    } "],
-        }), 
-        __metadata('design:paramtypes', [recipenames_service_1.RecNameService])
-    ], RecComp);
-    return RecComp;
-}());
+    }
+    getRecNames() {
+        this.recNameService.getRecNames().then(data => this.recipes = data);
+    }
+};
+RecComp = __decorate([
+    core_1.Component({
+        selector: 'recipes',
+        templateUrl: 'html/recipes.html',
+        styles: [`
+    .yo {
+      background-color: greenyellow !important;
+      color: white;
+    } `],
+    }), 
+    __metadata('design:paramtypes', [recipenames_service_1.RecNameService])
+], RecComp);
 exports.RecComp = RecComp;
 //# sourceMappingURL=recipes.component.js.map

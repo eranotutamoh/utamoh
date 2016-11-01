@@ -8,19 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var mocknames_1 = require('../mocknames');
-var RecNameService = (function () {
-    function RecNameService() {
-    }
-    RecNameService.prototype.getRecNames = function () {
+const core_1 = require('@angular/core');
+const mocknames_1 = require('../mocknames');
+let RecNameService = class RecNameService {
+    getRecNames() {
         return Promise.resolve(mocknames_1.RECNAMES);
-    };
-    RecNameService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], RecNameService);
-    return RecNameService;
-}());
+    }
+    getRecDetail(id) {
+        return this.getRecNames()
+            .then(data => data.find(recName => recName._id === id));
+    }
+};
+RecNameService = __decorate([
+    core_1.Injectable(), 
+    __metadata('design:paramtypes', [])
+], RecNameService);
 exports.RecNameService = RecNameService;
 //# sourceMappingURL=recipenames.service.js.map

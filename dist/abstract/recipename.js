@@ -1,8 +1,5 @@
 "use strict";
-var RecName = (function () {
-    function RecName() {
-    }
-    return RecName;
-}());
+class RecName {
+}
 exports.RecName = RecName;
 //# sourceMappingURL=recipename.js.map
