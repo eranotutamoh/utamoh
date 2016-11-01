@@ -11,28 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Recipe';
-        this.recipes = MOCKLIST;
-        this.name = 'Virgil Hanover';
+        this.title = 'Recipe Database';
     }
-    AppComponent.prototype.logIndex = function (idx) {
-        console.log('Recipe', this.recipes[idx]._id, this.recipes[idx].name);
-        this.onSelect(this.recipes[idx]);
-    };
-    ;
-    AppComponent.prototype.onSelect = function (recipe) {
-        this.selectedRecipe = recipe;
-    };
     AppComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            templateUrl: 'html/recipes.html',
-            styles: ["\n    .yo {\n      background-color: greenyellow !important;\n      color: white;\n    } "]
+            selector: 'recipes-app',
+            template: "\n        <nav>\n            <a routerLink=\"/recipes\">Recipes</a>\n            <a routerLink=\"/search\">Search</a>\n        </nav>\n        <section class=mid>\n            <h1>{{title}}</h1>\n            <router-outlet></router-outlet>            \n        </section>\n        <section class=right></section>\n            \n      "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
-var MOCKLIST = [{ "_id": "57e32a7ac5ff5d0f0047d8d0", "name": "Arab Spring Salad" }, { "_id": "57c3f8772ff8260f00cb266a", "name": "Artichoke + Green Bean Salad" }, { "_id": "57bc16398671a10f0068a740", "name": "Asparagus & Orange Salad with Panko Haloumi" }, { "_id": "57bc188d8671a10f0068a777", "name": "Asparagus w/ Roasted Sesame Dressing" }];
 //# sourceMappingURL=app.component.js.map

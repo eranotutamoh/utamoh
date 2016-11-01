@@ -1,0 +1,146 @@
+body {
+    background-color: #190C00;
+    margin: auto    ;
+    padding: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #F3DF3E;
+}
+html {
+    overflow-y: scroll;
+}
+.width {
+    background-color:#341900 ;
+    margin: 0 auto;
+    width: 1010px;
+    border: 7px solid #542800;
+    border-top: none;
+    border-radius: 0 0 10px 10px
+}
+nav, section {
+    display: inline-block;
+    vertical-align: top;
+    min-height: 630px;
+}
+nav {
+    width: 200px;
+}
+.mid {
+    border-left: 2px solid #542800;
+    border-right: 2px solid #542800;
+    padding: 0 15px 0 25px;
+    width: 466px;
+}
+.right {
+    padding: 0 15px 0 25px;
+    width: 250px;
+}
+a {
+    color: #4FF93E;
+    text-decoration: none;
+}
+nav a {
+    padding-left: 25px;
+    display: block;
+    margin: 14px;
+}
+nav a:first-child, section p {
+    margin-top: 24px;
+}
+input, textarea {
+    display: block;
+    margin: 5px 0;
+}
+input {
+    z-index: 1;
+}
+form a {
+    text-decoration: none  ;
+    display: block;
+    margin-bottom: 15px;
+}
+#suggest {
+    border: none;
+    border-top: none;
+    position: relative;
+    top: -5px;
+    width: 139px;
+    z-index: 10;
+}
+
+#sugget a:hover {
+    background-color: darksalmon;
+}
+#suggest a:active {
+    background-color: crimson;
+}
+button#clear {
+    float: right;
+    margin-right: 180px;
+    margin-top: -24px;
+}
+.hot {
+    background-color: crimson;
+}
+.recipes div {
+    margin: 0 0 15px 15px;
+}
+.recipes div a {
+    display: inline-block;
+    margin-left: 25px;
+    width: 250px;
+}
+.recipes div button {
+    vertical-align: top;
+}
+.ingredients {
+    display: none;
+}
+form .ingredients {
+    margin: 5px 0 10px;
+    display: block;
+}
+input.wide {
+    width: 318px;
+}
+.ingredients input {
+    display: inline-block;
+    margin: 0 10px;
+}
+input.error {
+    background-color: yellow;
+}
+.small {
+    width: 60px;
+}
+h4 {
+    margin: 20px 0 0;
+}
+dt, dd {
+    display: inline-block;
+    margin: 0 0 15px;
+}
+dd {
+    width: 300px;
+}
+dt {
+    width: 100px;
+}
+.another, .takeaway {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 2px 2px;
+    display: block;
+    font-size: 1.4em;
+    margin: 10px 0 20px;
+    text-indent: 7px;
+    width: 30px;
+}
+.takeaway {
+    display: inline-block;
+    line-height: 13px;
+    text-indent: 8px;
+    margin: 4PX 0 0;
+    vertical-align: top;
+    font-size: 24px;
+    padding: 0;
+}
