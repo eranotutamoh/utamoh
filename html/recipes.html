@@ -1,5 +1,5 @@
 <h1>{{title}}s</h1>
-<h5>Hello {{name}} your selected recipe is <span *ngIf="selectedRecipe">{{selectedRecipe.name}}</span></h5>
+<h5>Hello {{name}} your selected recipe is <rec-link [recipe]="selectedRecipe"></rec-link></h5>
 
 <ul>
         <li *ngFor="let recipe of recipes; let index = index" [class.yo]="recipe === selectedRecipe">

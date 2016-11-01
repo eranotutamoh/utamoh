@@ -9,12 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var RecipeName = (function () {
-    function RecipeName() {
-    }
-    return RecipeName;
-}());
-exports.RecipeName = RecipeName;
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Recipe';
@@ -33,7 +27,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'html/recipes.html',
-            styles: ["\n    .yo {\n      background-color: red !important;\n      color: white;\n    } "]
+            styles: ["\n    .yo {\n      background-color: greenyellow !important;\n      color: white;\n    } "]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
