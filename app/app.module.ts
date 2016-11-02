@@ -1,7 +1,8 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { RouterModule }   from '@angular/router';
+import { AppRoutingModule }   from './app-routing.module';
+import { HttpModule }    from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import {RecLinkComp}     from './component/recipelink.component';
@@ -13,7 +14,9 @@ import { RecNameService } from './service/recipenames.service';
 
 @NgModule({
     imports:      [ BrowserModule,
-                    FormsModule
+                    FormsModule,
+                    AppRoutingModule,
+                    HttpModule
                     ],
     declarations: [ AppComponent,
                     RecLinkComp,

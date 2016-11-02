@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
-import {RecName}  from '../abstract/recipename';
+import {RecDetail}  from '../abstract/recipedetail';
 import { RecNameService } from '../service/recipenames.service';
 
 
@@ -21,7 +21,7 @@ export class RecDetailComp implements OnInit {
     }
 
     title = 'Recipe';
-    recipe: RecName;
+    recipe: RecDetail;
 
     constructor(private recNameService: RecNameService,private route: ActivatedRoute, private location: Location ) {}
 

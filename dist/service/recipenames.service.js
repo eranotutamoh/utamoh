@@ -9,20 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mocknames_1 = require('../mocknames');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
 var RecNameService = (function () {
-    function RecNameService() {
+    function RecNameService(http) {
+        this.http = http;
+        this.recipeNamesUrl = 'api/recipes';
+        this.recipeDetailUrl = 'api/recipe/';
     }
+    RecNameService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    };
     RecNameService.prototype.getRecNames = function () {
-        return Promise.resolve(mocknames_1.RECNAMES);
+        return this.http.get(this.recipeNamesUrl)
+            .toPromise()
+            .then(function (response) { return JSON.parse(response._body); })
+            .catch(this.handleError);
     };
     RecNameService.prototype.getRecDetail = function (id) {
-        return this.getRecNames()
-            .then(function (recipes) { return recipes.find(function (recipe) { return recipe._id === id; }); });
+        return this.http.get("" + this.recipeDetailUrl + id)
+            .toPromise()
+            .then(function (response) { return JSON.parse(response._body); })
+            .catch(this.handleError);
     };
     RecNameService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], RecNameService);
     return RecNameService;
 }());
