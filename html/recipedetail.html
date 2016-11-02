@@ -1,2 +1,3 @@
-<p>{{recipe._id}}</p>
-<p>{{recipe.name}}</p>
+<button (click)="goBack()">Back</button>
+<p *ngIf="recipe">{{recipe._id}}</p>
+<p *ngIf="recipe">{{recipe.name}}</p>
