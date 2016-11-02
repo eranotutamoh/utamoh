@@ -18,7 +18,7 @@ var RecNameService = (function () {
     };
     RecNameService.prototype.getRecDetail = function (id) {
         return this.getRecNames()
-            .then(function (data) { return data.find(function (recName) { return recName._id === id; }); });
+            .then(function (recipes) { return recipes.find(function (recipe) { return recipe._id === id; }); });
     };
     RecNameService = __decorate([
         core_1.Injectable(), 

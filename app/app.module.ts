@@ -13,30 +13,13 @@ import { RecNameService } from './service/recipenames.service';
 
 @NgModule({
     imports:      [ BrowserModule,
-                    FormsModule,
-                    RouterModule.forRoot([
-                    {
-                        path: '',
-                        redirectTo: '/search',
-                        pathMatch: 'full'
-                    },
-                    {
-                        path: 'recipes',
-                        component: RecComp
-                    },
-                    {
-                        path: 'search',
-                        component: RecSearchComp
-                    },
-                    {
-                        path: 'recipe/:id',
-                        component: RecDetailComp
-                    }
-                    ])],
+                    FormsModule
+                    ],
     declarations: [ AppComponent,
                     RecLinkComp,
                     RecComp,
-                    RecSearchComp],
+                    RecSearchComp,
+                    RecDetailComp],
     providers:    [RecNameService ],
     bootstrap:    [ AppComponent ]
 })

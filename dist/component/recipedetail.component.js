@@ -30,6 +30,9 @@ var RecDetailComp = (function () {
         var _this = this;
         this.recNameService.getRecDetail(id).then(function (data) { return _this.recipe = data; });
     };
+    RecDetailComp.prototype.goBack = function () {
+        this.location.back();
+    };
     RecDetailComp = __decorate([
         core_1.Component({
             selector: 'recipe',

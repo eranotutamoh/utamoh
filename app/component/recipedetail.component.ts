@@ -13,17 +13,24 @@ import { RecNameService } from '../service/recipenames.service';
 export class RecDetailComp implements OnInit {
 
     ngOnInit(): void {
+
         this.route.params.forEach((params: Params) => {
             let id = params['id'];
             this.getRecDetail(id);
         });
     }
+
     title = 'Recipe';
     recipe: RecName;
-    constructor(private recNameService: RecNameService,private route: ActivatedRoute, private location: Location ) {
-    }
+
+    constructor(private recNameService: RecNameService,private route: ActivatedRoute, private location: Location ) {}
+
     getRecDetail(id) : void {
         this.recNameService.getRecDetail(id).then(data => this.recipe = data);
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 }
 
