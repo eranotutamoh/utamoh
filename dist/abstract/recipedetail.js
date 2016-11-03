@@ -1,13 +1,7 @@
 "use strict";
-var RecDetail = (function () {
-    function RecDetail() {
-    }
-    return RecDetail;
-}());
+class RecDetail {
+}
 exports.RecDetail = RecDetail;
-var Ingredients = (function () {
-    function Ingredients() {
-    }
-    return Ingredients;
-}());
+class Ingredients {
+}
 //# sourceMappingURL=recipedetail.js.map

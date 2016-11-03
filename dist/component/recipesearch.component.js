@@ -8,18 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var RecSearchComp = (function () {
-    function RecSearchComp() {
-    }
-    RecSearchComp = __decorate([
-        core_1.Component({
-            selector: 'rec-search',
-            template: "<h3>Search</h3>"
-        }), 
-        __metadata('design:paramtypes', [])
-    ], RecSearchComp);
-    return RecSearchComp;
-}());
+const core_1 = require('@angular/core');
+let RecSearchComp = class RecSearchComp {
+};
+RecSearchComp = __decorate([
+    core_1.Component({
+        selector: 'rec-search',
+        template: `<h3>Search</h3>`
+    }), 
+    __metadata('design:paramtypes', [])
+], RecSearchComp);
 exports.RecSearchComp = RecSearchComp;
 //# sourceMappingURL=recipesearch.component.js.map
