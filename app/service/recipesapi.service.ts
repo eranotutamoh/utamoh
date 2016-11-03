@@ -5,7 +5,7 @@ import { RecName} from '../abstract/recipename';
 import { RecDetail } from '../abstract/recipedetail';
 
 @Injectable()
-export class RecNameService {
+export class RecApiService {
 
     private recipeNamesUrl = 'api/recipes';
     private recipeDetailUrl = 'api/recipe/';
@@ -20,13 +20,13 @@ export class RecNameService {
     getRecNames() : Promise<RecName[]> {
         return this.http.get(this.recipeNamesUrl)
             .toPromise()
-            .then(response => JSON.parse(response._body) as RecName[] )
+            .then(response => JSON.parse(response["_body"]) )
             .catch(this.handleError);
     }
-    getRecDetail(id: string) : Promise<RecName>  {
+    getRecDetail(id: string) : Promise<RecDetail>  {
         return this.http.get(`${this.recipeDetailUrl}${id}`)
             .toPromise()
-            .then(response => JSON.parse(response._body))
+            .then(response => JSON.parse(response["_body"]))
             .catch(this.handleError);
     }
 }

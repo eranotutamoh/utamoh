@@ -18,7 +18,9 @@ const recipelink_component_1 = require('./component/recipelink.component');
 const recipes_component_1 = require('./component/recipes.component');
 const recipesearch_component_1 = require('./component/recipesearch.component');
 const recipedetail_component_1 = require('./component/recipedetail.component');
-const recipenames_service_1 = require('./service/recipenames.service');
+const recipeform_component_1 = require('./component/recipeform.component');
+const recipeedit_component_1 = require('./component/recipeedit.component');
+const recipesapi_service_1 = require('./service/recipesapi.service');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -30,10 +32,12 @@ AppModule = __decorate([
         ],
         declarations: [app_component_1.AppComponent,
             recipelink_component_1.RecLinkComp,
-            recipes_component_1.RecComp,
+            recipes_component_1.RecListComp,
             recipesearch_component_1.RecSearchComp,
-            recipedetail_component_1.RecDetailComp],
-        providers: [recipenames_service_1.RecNameService],
+            recipedetail_component_1.RecDetailComp,
+            recipeform_component_1.RecFormComp,
+            recipeedit_component_1.RecEditComp],
+        providers: [recipesapi_service_1.RecApiService],
         bootstrap: [app_component_1.AppComponent]
     }), 
     __metadata('design:paramtypes', [])

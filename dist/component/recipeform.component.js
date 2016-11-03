@@ -9,23 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-const recipename_1 = require('../abstract/recipename');
-let RecLinkComp = class RecLinkComp {
+const recipedetail_1 = require('../abstract/recipedetail');
+let RecFormComp = class RecFormComp {
     constructor() {
-        this.recipe = recipename_1.RecName;
+        this.recipe = recipedetail_1.RecDetail;
+        this.submitted = false;
     }
+    ngOnInit() {
+        this.model = this.recipe || recipedetail_1.RecDetail;
+    }
+    onSubmit() { this.submitted = true; }
+    // TODO: Remove this when we're done
+    get diagnostic() { return JSON.stringify(this.model); }
 };
 __decorate([
     core_1.Input(), 
     __metadata('design:type', Object)
-], RecLinkComp.prototype, "recipe", void 0);
-RecLinkComp = __decorate([
+], RecFormComp.prototype, "recipe", void 0);
+RecFormComp = __decorate([
     core_1.Component({
-        selector: 'rec-link',
-        template: `<span *ngIf="recipe"><a routerLink="/recipe/{{recipe._id}}">{{recipe.name}}</a></span>
-                `
+        selector: 'rec-form',
+        templateUrl: 'html/recipeform.html'
     }), 
     __metadata('design:paramtypes', [])
-], RecLinkComp);
-exports.RecLinkComp = RecLinkComp;
-//# sourceMappingURL=recipelink.component.js.map
+], RecFormComp);
+exports.RecFormComp = RecFormComp;
+//# sourceMappingURL=recipeform.component.js.map

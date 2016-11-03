@@ -6,10 +6,12 @@ import { HttpModule }    from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import {RecLinkComp}     from './component/recipelink.component';
-import { RecComp }   from './component/recipes.component';
+import { RecListComp }   from './component/recipes.component';
 import { RecSearchComp }   from './component/recipesearch.component';
 import { RecDetailComp }   from './component/recipedetail.component';
-import { RecNameService } from './service/recipenames.service';
+import { RecFormComp }   from './component/recipeform.component';
+import { RecEditComp }   from './component/recipeedit.component';
+import { RecApiService } from './service/recipesapi.service';
 
 
 @NgModule({
@@ -20,10 +22,12 @@ import { RecNameService } from './service/recipenames.service';
                     ],
     declarations: [ AppComponent,
                     RecLinkComp,
-                    RecComp,
+                    RecListComp,
                     RecSearchComp,
-                    RecDetailComp],
-    providers:    [RecNameService ],
+                    RecDetailComp,
+                    RecFormComp,
+                    RecEditComp],
+    providers:    [RecApiService ],
     bootstrap:    [ AppComponent ]
 })
 

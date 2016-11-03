@@ -13,6 +13,8 @@ const router_1 = require('@angular/router');
 const recipes_component_1 = require('./component/recipes.component');
 const recipesearch_component_1 = require('./component/recipesearch.component');
 const recipedetail_component_1 = require('./component/recipedetail.component');
+const recipeform_component_1 = require('./component/recipeform.component');
+const recipeedit_component_1 = require('./component/recipeedit.component');
 const routes = [
     {
         path: '',
@@ -21,7 +23,7 @@ const routes = [
     },
     {
         path: 'recipes',
-        component: recipes_component_1.RecComp
+        component: recipes_component_1.RecListComp
     },
     {
         path: 'search',
@@ -30,6 +32,14 @@ const routes = [
     {
         path: 'recipe/:id',
         component: recipedetail_component_1.RecDetailComp
+    },
+    {
+        path: 'edit/:id',
+        component: recipeedit_component_1.RecEditComp
+    },
+    {
+        path: 'recipeform',
+        component: recipeform_component_1.RecFormComp
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

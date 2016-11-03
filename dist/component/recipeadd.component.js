@@ -9,23 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-const recipename_1 = require('../abstract/recipename');
-let RecLinkComp = class RecLinkComp {
-    constructor() {
-        this.recipe = recipename_1.RecName;
-    }
+let RecAddComp = class RecAddComp {
 };
-__decorate([
-    core_1.Input(), 
-    __metadata('design:type', Object)
-], RecLinkComp.prototype, "recipe", void 0);
-RecLinkComp = __decorate([
+RecAddComp = __decorate([
     core_1.Component({
-        selector: 'rec-link',
-        template: `<span *ngIf="recipe"><a routerLink="/recipe/{{recipe._id}}">{{recipe.name}}</a></span>
-                `
+        selector: 'rec-add',
+        template: `<h3>Add</h3>`
     }), 
     __metadata('design:paramtypes', [])
-], RecLinkComp);
-exports.RecLinkComp = RecLinkComp;
-//# sourceMappingURL=recipelink.component.js.map
+], RecAddComp);
+exports.RecAddComp = RecAddComp;
+//# sourceMappingURL=recipeadd.component.js.map

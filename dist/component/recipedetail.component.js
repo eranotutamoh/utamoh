@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
 const common_1 = require('@angular/common');
-const recipenames_service_1 = require('../service/recipenames.service');
+const recipesapi_service_1 = require('../service/recipesapi.service');
 let RecDetailComp = class RecDetailComp {
     constructor(recNameService, route, location) {
         this.recNameService = recNameService;
@@ -37,7 +37,7 @@ RecDetailComp = __decorate([
         selector: 'recipe',
         templateUrl: 'html/recipedetail.html',
     }), 
-    __metadata('design:paramtypes', [recipenames_service_1.RecNameService, router_1.ActivatedRoute, common_1.Location])
+    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.ActivatedRoute, common_1.Location])
 ], RecDetailComp);
 exports.RecDetailComp = RecDetailComp;
 //# sourceMappingURL=recipedetail.component.js.map

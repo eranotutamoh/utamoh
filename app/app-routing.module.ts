@@ -1,10 +1,11 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RecComp }   from './component/recipes.component';
+import { RecListComp }   from './component/recipes.component';
 import { RecSearchComp }   from './component/recipesearch.component';
 import { RecDetailComp }   from './component/recipedetail.component';
-
+import { RecFormComp }   from './component/recipeform.component';
+import { RecEditComp }   from './component/recipeedit.component';
 
 const routes: Routes = [
     {
@@ -14,7 +15,7 @@ const routes: Routes = [
     },
     {
         path: 'recipes',
-        component: RecComp
+        component: RecListComp
     },
     {
         path: 'search',
@@ -23,6 +24,14 @@ const routes: Routes = [
     {
         path: 'recipe/:id',
         component: RecDetailComp
+    },
+    {
+        path: 'edit/:id',
+        component: RecEditComp
+    },
+    {
+        path: 'recipeform',
+        component: RecFormComp
     }
 ];
 

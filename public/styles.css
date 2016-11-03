@@ -81,15 +81,19 @@ button#clear {
 .hot {
     background-color: crimson;
 }
-.recipes div {
-    margin: 0 0 15px 15px;
+.recipes {
+    list-style: none;
+    padding:0;
 }
-.recipes div a {
+.recipes li {
+    margin: 0 0 15px 0;
+}
+.recipes li a {
     display: inline-block;
     margin-left: 25px;
     width: 250px;
 }
-.recipes div button {
+.recipes li button {
     vertical-align: top;
 }
 .ingredients {
