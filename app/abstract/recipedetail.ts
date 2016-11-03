@@ -1,12 +1,14 @@
+import {Ingredients} from './ingredients'
+
 export class RecDetail {
-    _id: string;
-    name: string;
-    ingredients: Ingredients[];
-    instructions: string;
+
+    constructor(
+    public name: string,
+    public ingredients: Ingredients[],
+    public instructions: string,
+    public _id?: string
+
+    ) {}
+
 }
 
-class Ingredients {
-    _id: string;
-    name: string;
-    quantity: string;
-}

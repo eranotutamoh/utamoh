@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {RecName}  from '../abstract/recipename';
-import {RecLinkComp}  from './recipelink.component';
-import { RecNameService } from '../service/recipenames.service';
+import {RecDetail}  from '../abstract/recipedetail';
+import {Ingredients}  from '../abstract/ingredients';
+import { Router } from '@angular/router';
+import { RecApiService } from '../service/recipesapi.service';
 
 
 @Component({
@@ -14,24 +16,21 @@ import { RecNameService } from '../service/recipenames.service';
     } `],
 })
 
-export class RecComp implements OnInit {
+export class RecListComp implements OnInit {
 
     ngOnInit(): void {
         this.getRecNames();
     }
-    title = 'Recipe';
     recipes: RecName[];
-    name: string;
-    selectedRecipe: RecName;
-    constructor(private recNameService: RecNameService ) {
-        this.name = 'Virgil Hanover';
+    constructor(private recNameService: RecApiService, private router: Router ) {
     }
-    logIndex(idx) {
-        console.log('Recipe', this.recipes[idx]._id, this.recipes[idx].name);
-        this.onSelect(this.recipes[idx]);
+    deleteRec(recipe: RecName): void {
+        console.log(recipe._id, "Delete: ", recipe.name);
+
     };
-    onSelect(recipe: RecName): void {
-        this.selectedRecipe = recipe;
+    editRec(recipe: RecName): void {
+        let link = ['/edit', recipe._id];
+        this.router.navigate(link);
     }
     getRecNames() : void {
         this.recNameService.getRecNames().then(data => this.recipes = data);

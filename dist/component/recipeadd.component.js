@@ -9,14 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let RecSearchComp = class RecSearchComp {
+let RecAddComp = class RecAddComp {
 };
-RecSearchComp = __decorate([
+RecAddComp = __decorate([
     core_1.Component({
-        selector: 'rec-search',
-        template: `<h3>Search</h3>`
+        selector: 'rec-add',
+        template: `<h3>Add</h3>`
     }), 
     __metadata('design:paramtypes', [])
-], RecSearchComp);
-exports.RecSearchComp = RecSearchComp;
-//# sourceMappingURL=recipesearch.component.js.map
+], RecAddComp);
+exports.RecAddComp = RecAddComp;
+//# sourceMappingURL=recipeadd.component.js.map

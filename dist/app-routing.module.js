@@ -8,12 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var recipes_component_1 = require('./component/recipes.component');
-var recipesearch_component_1 = require('./component/recipesearch.component');
-var recipedetail_component_1 = require('./component/recipedetail.component');
-var routes = [
+const core_1 = require('@angular/core');
+const router_1 = require('@angular/router');
+const recipes_component_1 = require('./component/recipes.component');
+const recipesearch_component_1 = require('./component/recipesearch.component');
+const recipedetail_component_1 = require('./component/recipedetail.component');
+const recipeform_component_1 = require('./component/recipeform.component');
+const recipeedit_component_1 = require('./component/recipeedit.component');
+const routes = [
     {
         path: '',
         redirectTo: '/search',
@@ -21,7 +23,7 @@ var routes = [
     },
     {
         path: 'recipes',
-        component: recipes_component_1.RecComp
+        component: recipes_component_1.RecListComp
     },
     {
         path: 'search',
@@ -30,19 +32,24 @@ var routes = [
     {
         path: 'recipe/:id',
         component: recipedetail_component_1.RecDetailComp
+    },
+    {
+        path: 'edit/:id',
+        component: recipeedit_component_1.RecEditComp
+    },
+    {
+        path: 'recipeform',
+        component: recipeform_component_1.RecFormComp
     }
 ];
-var AppRoutingModule = (function () {
-    function AppRoutingModule() {
-    }
-    AppRoutingModule = __decorate([
-        core_1.NgModule({
-            imports: [router_1.RouterModule.forRoot(routes)],
-            exports: [router_1.RouterModule]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppRoutingModule);
-    return AppRoutingModule;
-}());
+let AppRoutingModule = class AppRoutingModule {
+};
+AppRoutingModule = __decorate([
+    core_1.NgModule({
+        imports: [router_1.RouterModule.forRoot(routes)],
+        exports: [router_1.RouterModule]
+    }), 
+    __metadata('design:paramtypes', [])
+], AppRoutingModule);
 exports.AppRoutingModule = AppRoutingModule;
 //# sourceMappingURL=app-routing.module.js.map

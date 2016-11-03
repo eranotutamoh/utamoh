@@ -1,11 +1,8 @@
-<h5>Hello {{name}} your selected recipe is <rec-link [recipe]="selectedRecipe"></rec-link></h5>
-
-<ul>
+<ul class="recipes">
         <li *ngFor="let recipe of recipes; let index = index" [class.yo]="recipe === selectedRecipe">
-            <input type="checkbox"  (change)="logIndex(index)">
-            <label>Recipe: </label>
-            <input [(ngModel)]="recipe.name" placeholder="Recipe">
-            {{recipe.name}}
+                <button class="delete" (click)="deleteRec(recipe)" >Delete</button>
+                <button class="edit"  (click)="editRec(recipe)" >Edit</button>
+                <rec-link [recipe]="recipe"></rec-link>
         </li>
 </ul>
 

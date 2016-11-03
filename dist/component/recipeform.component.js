@@ -9,14 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let RecSearchComp = class RecSearchComp {
+const recipedetail_1 = require('../abstract/recipedetail');
+let RecFormComp = class RecFormComp {
+    constructor() {
+        this.recipe = recipedetail_1.RecDetail;
+        this.submitted = false;
+    }
+    ngOnInit() {
+        this.model = this.recipe || recipedetail_1.RecDetail;
+    }
+    onSubmit() { this.submitted = true; }
+    // TODO: Remove this when we're done
+    get diagnostic() { return JSON.stringify(this.model); }
 };
-RecSearchComp = __decorate([
+__decorate([
+    core_1.Input(), 
+    __metadata('design:type', Object)
+], RecFormComp.prototype, "recipe", void 0);
+RecFormComp = __decorate([
     core_1.Component({
-        selector: 'rec-search',
-        template: `<h3>Search</h3>`
+        selector: 'rec-form',
+        templateUrl: 'html/recipeform.html'
     }), 
     __metadata('design:paramtypes', [])
-], RecSearchComp);
-exports.RecSearchComp = RecSearchComp;
-//# sourceMappingURL=recipesearch.component.js.map
+], RecFormComp);
+exports.RecFormComp = RecFormComp;
+//# sourceMappingURL=recipeform.component.js.map

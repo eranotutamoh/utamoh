@@ -1,13 +1,11 @@
 "use strict";
-var RecDetail = (function () {
-    function RecDetail() {
+class RecDetail {
+    constructor(name, ingredients, instructions, _id) {
+        this.name = name;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
+        this._id = _id;
     }
-    return RecDetail;
-}());
+}
 exports.RecDetail = RecDetail;
-var Ingredients = (function () {
-    function Ingredients() {
-    }
-    return Ingredients;
-}());
 //# sourceMappingURL=recipedetail.js.map

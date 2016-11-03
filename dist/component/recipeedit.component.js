@@ -11,37 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
 const recipesapi_service_1 = require('../service/recipesapi.service');
-let RecListComp = class RecListComp {
-    constructor(recNameService, router) {
+let RecEditComp = class RecEditComp {
+    constructor(recNameService, route) {
         this.recNameService = recNameService;
-        this.router = router;
+        this.route = route;
     }
     ngOnInit() {
-        this.getRecNames();
+        this.route.params.forEach((params) => {
+            let id = params['id'];
+            this.getRecDetail(id);
+        });
     }
-    deleteRec(recipe) {
-        console.log(recipe._id, "Delete: ", recipe.name);
-    }
-    ;
-    editRec(recipe) {
-        let link = ['/edit', recipe._id];
-        this.router.navigate(link);
-    }
-    getRecNames() {
-        this.recNameService.getRecNames().then(data => this.recipes = data);
+    getRecDetail(id) {
+        this.recNameService.getRecDetail(id).then(data => this.recipe = data);
     }
 };
-RecListComp = __decorate([
+RecEditComp = __decorate([
     core_1.Component({
-        selector: 'recipes',
-        templateUrl: 'html/recipes.html',
-        styles: [`
-    .yo {
-      background-color: greenyellow !important;
-      color: white;
-    } `],
+        selector: 'recipe-edit',
+        template: `<div *ngIf="recipe">
+                    <h4 >{{recipe.name}}</h4>
+                    <rec-form [recipe]="recipe"></rec-form>
+                </div>`
     }), 
-    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.Router])
-], RecListComp);
-exports.RecListComp = RecListComp;
-//# sourceMappingURL=recipes.component.js.map
+    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.ActivatedRoute])
+], RecEditComp);
+exports.RecEditComp = RecEditComp;
+//# sourceMappingURL=recipeedit.component.js.map

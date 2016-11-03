@@ -8,36 +8,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+const core_1 = require('@angular/core');
+const http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var RecNameService = (function () {
-    function RecNameService(http) {
+let RecApiService = class RecApiService {
+    constructor(http) {
         this.http = http;
         this.recipeNamesUrl = 'api/recipes';
         this.recipeDetailUrl = 'api/recipe/';
     }
-    RecNameService.prototype.handleError = function (error) {
+    handleError(error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
-    };
-    RecNameService.prototype.getRecNames = function () {
+    }
+    getRecNames() {
         return this.http.get(this.recipeNamesUrl)
             .toPromise()
-            .then(function (response) { return JSON.parse(response["_body"]); })
+            .then(response => JSON.parse(response["_body"]))
             .catch(this.handleError);
-    };
-    RecNameService.prototype.getRecDetail = function (id) {
-        return this.http.get("" + this.recipeDetailUrl + id)
+    }
+    getRecDetail(id) {
+        return this.http.get(`${this.recipeDetailUrl}${id}`)
             .toPromise()
-            .then(function (response) { return JSON.parse(response["_body"]); })
+            .then(response => JSON.parse(response["_body"]))
             .catch(this.handleError);
-    };
-    RecNameService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], RecNameService);
-    return RecNameService;
-}());
-exports.RecNameService = RecNameService;
-//# sourceMappingURL=recipenames.service.js.map
+    }
+};
+RecApiService = __decorate([
+    core_1.Injectable(), 
+    __metadata('design:paramtypes', [http_1.Http])
+], RecApiService);
+exports.RecApiService = RecApiService;
+//# sourceMappingURL=recipesapi.service.js.map

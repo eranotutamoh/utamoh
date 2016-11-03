@@ -8,38 +8,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
-var app_routing_module_1 = require('./app-routing.module');
-var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
-var recipelink_component_1 = require('./component/recipelink.component');
-var recipes_component_1 = require('./component/recipes.component');
-var recipesearch_component_1 = require('./component/recipesearch.component');
-var recipedetail_component_1 = require('./component/recipedetail.component');
-var recipenames_service_1 = require('./service/recipenames.service');
-var AppModule = (function () {
-    function AppModule() {
-    }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule,
-                forms_1.FormsModule,
-                app_routing_module_1.AppRoutingModule,
-                http_1.HttpModule
-            ],
-            declarations: [app_component_1.AppComponent,
-                recipelink_component_1.RecLinkComp,
-                recipes_component_1.RecComp,
-                recipesearch_component_1.RecSearchComp,
-                recipedetail_component_1.RecDetailComp],
-            providers: [recipenames_service_1.RecNameService],
-            bootstrap: [app_component_1.AppComponent]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
-}());
+const core_1 = require('@angular/core');
+const platform_browser_1 = require('@angular/platform-browser');
+const forms_1 = require('@angular/forms');
+const app_routing_module_1 = require('./app-routing.module');
+const http_1 = require('@angular/http');
+const app_component_1 = require('./app.component');
+const recipelink_component_1 = require('./component/recipelink.component');
+const recipes_component_1 = require('./component/recipes.component');
+const recipesearch_component_1 = require('./component/recipesearch.component');
+const recipedetail_component_1 = require('./component/recipedetail.component');
+const recipeform_component_1 = require('./component/recipeform.component');
+const recipeedit_component_1 = require('./component/recipeedit.component');
+const recipesapi_service_1 = require('./service/recipesapi.service');
+let AppModule = class AppModule {
+};
+AppModule = __decorate([
+    core_1.NgModule({
+        imports: [platform_browser_1.BrowserModule,
+            forms_1.FormsModule,
+            app_routing_module_1.AppRoutingModule,
+            http_1.HttpModule
+        ],
+        declarations: [app_component_1.AppComponent,
+            recipelink_component_1.RecLinkComp,
+            recipes_component_1.RecListComp,
+            recipesearch_component_1.RecSearchComp,
+            recipedetail_component_1.RecDetailComp,
+            recipeform_component_1.RecFormComp,
+            recipeedit_component_1.RecEditComp],
+        providers: [recipesapi_service_1.RecApiService],
+        bootstrap: [app_component_1.AppComponent]
+    }), 
+    __metadata('design:paramtypes', [])
+], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map
