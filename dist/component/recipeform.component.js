@@ -10,13 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const recipedetail_1 = require('../abstract/recipedetail');
+const ingredients_1 = require('../abstract/ingredients');
 let RecFormComp = class RecFormComp {
     constructor() {
-        this.recipe = recipedetail_1.RecDetail;
         this.submitted = false;
     }
     ngOnInit() {
-        this.model = this.recipe || recipedetail_1.RecDetail;
+        this.model = this.recipe || new recipedetail_1.RecDetail('', [new ingredients_1.Ingredients('', '')], '');
     }
     onSubmit() { this.submitted = true; }
     // TODO: Remove this when we're done
@@ -24,7 +24,7 @@ let RecFormComp = class RecFormComp {
 };
 __decorate([
     core_1.Input(), 
-    __metadata('design:type', Object)
+    __metadata('design:type', recipedetail_1.RecDetail)
 ], RecFormComp.prototype, "recipe", void 0);
 RecFormComp = __decorate([
     core_1.Component({

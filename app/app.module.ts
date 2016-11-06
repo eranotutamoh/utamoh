@@ -11,6 +11,7 @@ import { RecSearchComp }   from './component/recipesearch.component';
 import { RecDetailComp }   from './component/recipedetail.component';
 import { RecFormComp }   from './component/recipeform.component';
 import { RecEditComp }   from './component/recipeedit.component';
+import { RecAddComp }   from './component/recipeadd.component';
 import { RecApiService } from './service/recipesapi.service';
 
 
@@ -26,7 +27,8 @@ import { RecApiService } from './service/recipesapi.service';
                     RecSearchComp,
                     RecDetailComp,
                     RecFormComp,
-                    RecEditComp],
+                    RecEditComp,
+                    RecAddComp],
     providers:    [RecApiService ],
     bootstrap:    [ AppComponent ]
 })
