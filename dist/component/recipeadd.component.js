@@ -9,14 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
+const router_1 = require('@angular/router');
+const recipesapi_service_1 = require('../service/recipesapi.service');
 let RecAddComp = class RecAddComp {
+    //recipe: RecDetail = new RecDetail('',[new Ingredients('','')],'');
+    constructor(recNameService, route) {
+        this.recNameService = recNameService;
+        this.route = route;
+    }
+    ngOnInit() {
+    }
 };
 RecAddComp = __decorate([
     core_1.Component({
-        selector: 'rec-add',
-        template: `<h3>Add</h3>`
+        selector: 'recipe-edit',
+        template: `<div>
+                    <rec-form></rec-form>
+                </div>`
     }), 
-    __metadata('design:paramtypes', [])
+    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.ActivatedRoute])
 ], RecAddComp);
 exports.RecAddComp = RecAddComp;
 //# sourceMappingURL=recipeadd.component.js.map
