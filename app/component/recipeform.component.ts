@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {RecDetail}  from '../abstract/recipedetail';
 import {Ingredients}  from '../abstract/ingredients';
-import {RecName}  from '../abstract/recipename';
 
 @Component({
     selector: 'rec-form',
@@ -11,13 +10,13 @@ import {RecName}  from '../abstract/recipename';
 export class RecFormComp {
 
     @Input()
-    recipe = RecDetail;
+    recipe: RecDetail;
 
     ngOnInit(): void {
-        this.model = this.recipe || RecDetail;
+        this.model = this.recipe || new RecDetail('',[new Ingredients('','')],'');
     }
 
-    model;
+    model: RecDetail;
 
     submitted = false;
 

@@ -30,7 +30,6 @@ RecEditComp = __decorate([
     core_1.Component({
         selector: 'recipe-edit',
         template: `<div *ngIf="recipe">
-                    <h4 >{{recipe.name}}</h4>
                     <rec-form [recipe]="recipe"></rec-form>
                 </div>`
     }), 

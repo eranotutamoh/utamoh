@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
         <nav>
             <a routerLink="/recipes">Recipes</a>
             <a routerLink="/search">Search</a>
+            <a routerLink="/recipeadd">Add Recipe</a>
         </nav>
         <section class=mid>
             <h1>{{title}}</h1>
