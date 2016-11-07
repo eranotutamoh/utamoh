@@ -16,6 +16,9 @@ let RecApiService = class RecApiService {
         this.http = http;
         this.recipeNamesUrl = 'api/recipes';
         this.recipeDetailUrl = 'api/recipe/';
+        this.recipeUpdateUrl = 'api/recipeedit/';
+        this.recipeAddUrl = 'api/recipeadd';
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     handleError(error) {
         console.error('An error occurred', error); // for demo purposes only
@@ -29,6 +32,21 @@ let RecApiService = class RecApiService {
     }
     getRecDetail(id) {
         return this.http.get(`${this.recipeDetailUrl}${id}`)
+            .toPromise()
+            .then(response => JSON.parse(response["_body"]))
+            .catch(this.handleError);
+    }
+    update(recipe) {
+        const url = `${this.recipeUpdateUrl}${recipe._id}`;
+        return this.http
+            .put(url, JSON.stringify(recipe), { headers: this.headers })
+            .toPromise()
+            .then(() => recipe)
+            .catch(this.handleError);
+    }
+    create(recipe) {
+        return this.http
+            .post(this.recipeAddUrl, JSON.stringify(recipe), { headers: this.headers })
             .toPromise()
             .then(response => JSON.parse(response["_body"]))
             .catch(this.handleError);

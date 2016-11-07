@@ -11,14 +11,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const recipedetail_1 = require('../abstract/recipedetail');
 const ingredients_1 = require('../abstract/ingredients');
+const router_1 = require('@angular/router');
+const recipesapi_service_1 = require('../service/recipesapi.service');
 let RecFormComp = class RecFormComp {
-    constructor() {
+    constructor(recService, router) {
+        this.recService = recService;
+        this.router = router;
         this.submitted = false;
     }
     ngOnInit() {
-        this.model = this.recipe || new recipedetail_1.RecDetail('', [new ingredients_1.Ingredients('', '')], '');
+        this.model = this.recipe || this.newRecipe();
     }
-    onSubmit() { this.submitted = true; }
+    newRecipe() {
+        this.ingredients = [new ingredients_1.Ingredients('', '')];
+        return new recipedetail_1.RecDetail('', this.ingredients, '');
+    }
+    addIngredient() {
+        this.ingredients.push(new ingredients_1.Ingredients('', ''));
+    }
+    ;
+    removeIngredient(ix) {
+        this.ingredients.splice(ix, 1);
+    }
+    ;
+    updateRecipe() {
+        let link = ['/recipe', this.recipe._id];
+        ;
+        this.recService.update(this.model)
+            .then(() => this.router.navigate(link));
+    }
+    addRecipe() {
+        this.recService.create(this.model)
+            .then(data => this.router.navigate(['/recipe', data._id]));
+    }
+    onSubmit() {
+        if (this.model._id)
+            this.updateRecipe();
+        else
+            this.addRecipe();
+        this.submitted = true;
+    }
     // TODO: Remove this when we're done
     get diagnostic() { return JSON.stringify(this.model); }
 };
@@ -31,7 +63,7 @@ RecFormComp = __decorate([
         selector: 'rec-form',
         templateUrl: 'html/recipeform.html'
     }), 
-    __metadata('design:paramtypes', [])
+    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.Router])
 ], RecFormComp);
 exports.RecFormComp = RecFormComp;
 //# sourceMappingURL=recipeform.component.js.map

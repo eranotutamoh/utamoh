@@ -22,8 +22,8 @@ export class RecListComp implements OnInit {
         this.getRecNames();
     }
     recipes: RecName[];
-    constructor(private recNameService: RecApiService, private router: Router ) {
-    }
+    constructor(private recNameService: RecApiService, private router: Router ) { }
+
     deleteRec(recipe: RecName): void {
         console.log(recipe._id, "Delete: ", recipe.name);
 

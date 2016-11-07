@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="onSubmit()" action="/api/recipeadd" method="post" >
     <label>Recipe name</label>
     <input type="text" name="name" class="wide" [(ngModel)]="model.name" required>
 
@@ -6,15 +6,16 @@
 
     <div *ngFor="let ing of model.ingredients; let ix = index">
         <div class="ingredients">
+            <label>Name</label>
+            <input type="text" name="iname" [(ngModel)]="model.ingredients[ix].name" [ngModelOptions]="{standalone: true}" required>
             <label>Quantity</label>
             <input type="text" name="quantity" class="small" [(ngModel)]="model.ingredients[ix].quantity" [ngModelOptions]="{standalone: true}">
-            <label>Name</label>
-            <input type="text" name="iname" [(ngModel)]="model.ingredients[ix].name" [ngModelOptions]="{standalone: true}" required></div>
-        <a href="#" class="another">+</a>
+            <button *ngIf="ix>0" class="takeaway" (click)="removeIngredient(ix)">-</button>
+        </div>
     </div>
-
+    <button class="another" (click)="addIngredient()">+</button>
     <label class="beforeThis">Instructions</label>
     <textarea rows="7" cols="51" name="instructions" class="wide" [(ngModel)]="model.instructions" required></textarea>
 
-        <button type="submit" >Submit</button>
+        <button type="submit"  >Submit</button>
 </form>
