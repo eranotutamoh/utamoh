@@ -17,22 +17,23 @@ export class RecFormComp {
     ngOnInit(): void {
         this.model = this.recipe || this.newRecipe() ;
     }
-    ingredients: Ingredients[];
+    //ingredients: Ingredients[];
     model: RecDetail;
     submitted = false;
 
     constructor(private recService: RecApiService, private router: Router ) { }
 
     newRecipe() {
-        this.ingredients = [new Ingredients('','')]
-        return new RecDetail('',this.ingredients,'');
+        let ings = [new Ingredients('','')]
+        return new RecDetail('',ings,'');
     }
-    addIngredient(): void {
-        this.ingredients.push(new Ingredients('',''));
-
+    addIngredient(): boolean {
+        this.model.ingredients.push(new Ingredients('',''));
+        return false;
     };
-    removeIngredient(ix): void {
-        this.ingredients.splice(ix,1);
+    removeIngredient(ix): boolean {
+        this.model.ingredients.splice(ix,1);
+        return false;
     };
     updateRecipe(): void {
         let link = ['/recipe', this.recipe._id];

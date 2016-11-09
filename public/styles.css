@@ -108,7 +108,11 @@ input.wide {
 }
 .ingredients input {
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 10px 10px;
+}
+.ingredients label {
+    display: inline-block;
+    width: 50px;
 }
 input.error {
     background-color: yellow;
@@ -150,14 +154,14 @@ dt {
     box-shadow: 1px 2px 2px;
     display: block;
     font-size: 1.4em;
-    margin: 10px 0 20px;
+    margin: 5px 0 20px;
     width: 30px;
 }
 .takeaway {
     background-color: darkred;
     display: inline-block;
     line-height: 13px;
-    margin: 4px 0 0;
+    margin: 1px 0 0;
     vertical-align: top;
     font-size: 24px;
     padding: 0;

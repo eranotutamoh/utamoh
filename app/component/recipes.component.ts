@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {RecName}  from '../abstract/recipename';
-import {RecDetail}  from '../abstract/recipedetail';
-import {Ingredients}  from '../abstract/ingredients';
 import { Router } from '@angular/router';
 import { RecApiService } from '../service/recipesapi.service';
 
@@ -22,18 +20,20 @@ export class RecListComp implements OnInit {
         this.getRecNames();
     }
     recipes: RecName[];
-    constructor(private recNameService: RecApiService, private router: Router ) { }
+    constructor(private recService: RecApiService, private router: Router ) { }
 
-    deleteRec(recipe: RecName): void {
-        console.log(recipe._id, "Delete: ", recipe.name);
-
+    deleteRec(recipe: RecName, ix: number): boolean {
+        if(!window.confirm('Delete '+recipe.name+'? '+ix)) return false;
+        this.recService
+            .delete(recipe._id)
+            .then(() => {this.recipes.splice(ix,1); });
     };
     editRec(recipe: RecName): void {
         let link = ['/edit', recipe._id];
         this.router.navigate(link);
     }
     getRecNames() : void {
-        this.recNameService.getRecNames().then(data => this.recipes = data);
+        this.recService.getRecNames().then(data => this.recipes = data);
     }
 }
 

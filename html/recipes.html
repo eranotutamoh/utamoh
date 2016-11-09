@@ -1,6 +1,6 @@
 <ul class="recipes">
         <li *ngFor="let recipe of recipes; let index = index" [class.yo]="recipe === selectedRecipe">
-                <button class="delete" (click)="deleteRec(recipe)" >Delete</button>
+                <button class="delete" (click)="deleteRec(recipe, index)" >Delete</button>
                 <button class="edit"  (click)="editRec(recipe)" >Edit</button>
                 <rec-link [recipe]="recipe"></rec-link>
         </li>

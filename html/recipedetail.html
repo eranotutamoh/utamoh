@@ -1,12 +1,10 @@
-<button (click)="goBack()">Back</button>
 <div *ngIf="recipe">
-<p>{{recipe._id}}</p>
-<p>{{recipe.name}}</p>
-<p>{{recipe.instructions}}</p>
-
-<ul>
-    <li *ngFor="let ing of recipe.ingredients">
-        <span>{{ing.quantity}}</span>  <span>{{ing.name}}</span>
-    </li>
-</ul>
+    <h1><a  routerLink="/edit/{{recipe._id}}" class="edit">{{recipe.name}}</a></h1>
+    <p>{{recipe.instructions}}</p>
+    <dl *ngFor="let ing of recipe.ingredients">
+        <dt>{{ing.quantity}}</dt>
+        <dd>{{ing.name}} {{ing.method}}</dd>
+    </dl>
 </div>
+<button (click)="goBack()">Back</button>
+

@@ -10,7 +10,10 @@
             <input type="text" name="iname" [(ngModel)]="model.ingredients[ix].name" [ngModelOptions]="{standalone: true}" required>
             <label>Quantity</label>
             <input type="text" name="quantity" class="small" [(ngModel)]="model.ingredients[ix].quantity" [ngModelOptions]="{standalone: true}">
-            <button *ngIf="ix>0" class="takeaway" (click)="removeIngredient(ix)">-</button>
+            <button *ngIf="ix>0" class="takeaway" (click)="removeIngredient(ix)">-</button><br>
+            <label>Method</label>
+            <input type="text" name="method"  [(ngModel)]="model.ingredients[ix].method" [ngModelOptions]="{standalone: true}">
+
         </div>
     </div>
     <button class="another" (click)="addIngredient()">+</button>

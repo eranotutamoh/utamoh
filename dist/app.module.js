@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+require('./rxjs-ext');
 const core_1 = require('@angular/core');
 const platform_browser_1 = require('@angular/platform-browser');
 const forms_1 = require('@angular/forms');
@@ -22,6 +23,7 @@ const recipeform_component_1 = require('./component/recipeform.component');
 const recipeedit_component_1 = require('./component/recipeedit.component');
 const recipeadd_component_1 = require('./component/recipeadd.component');
 const recipesapi_service_1 = require('./service/recipesapi.service');
+const ingredientsuggest_service_1 = require('./service/ingredientsuggest.service');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -39,7 +41,8 @@ AppModule = __decorate([
             recipeform_component_1.RecFormComp,
             recipeedit_component_1.RecEditComp,
             recipeadd_component_1.RecAddComp],
-        providers: [recipesapi_service_1.RecApiService],
+        providers: [recipesapi_service_1.RecApiService,
+            ingredientsuggest_service_1.AutoSearchService],
         bootstrap: [app_component_1.AppComponent]
     }), 
     __metadata('design:paramtypes', [])

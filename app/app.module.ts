@@ -1,8 +1,10 @@
+import './rxjs-ext';
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { AppRoutingModule }   from './app-routing.module';
 import { HttpModule }    from '@angular/http';
+
 
 import { AppComponent }  from './app.component';
 import {RecLinkComp}     from './component/recipelink.component';
@@ -12,7 +14,10 @@ import { RecDetailComp }   from './component/recipedetail.component';
 import { RecFormComp }   from './component/recipeform.component';
 import { RecEditComp }   from './component/recipeedit.component';
 import { RecAddComp }   from './component/recipeadd.component';
+
 import { RecApiService } from './service/recipesapi.service';
+import { AutoSearchService } from './service/ingredientsuggest.service';
+
 
 
 @NgModule({
@@ -29,7 +34,8 @@ import { RecApiService } from './service/recipesapi.service';
                     RecFormComp,
                     RecEditComp,
                     RecAddComp],
-    providers:    [RecApiService ],
+    providers:    [RecApiService,
+                   AutoSearchService],
     bootstrap:    [ AppComponent ]
 })
 

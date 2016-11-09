@@ -18,6 +18,7 @@ let RecApiService = class RecApiService {
         this.recipeDetailUrl = 'api/recipe/';
         this.recipeUpdateUrl = 'api/recipeedit/';
         this.recipeAddUrl = 'api/recipeadd';
+        this.recipeDeleteUrl = 'api/recipedelete/';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     handleError(error) {
@@ -49,6 +50,13 @@ let RecApiService = class RecApiService {
             .post(this.recipeAddUrl, JSON.stringify(recipe), { headers: this.headers })
             .toPromise()
             .then(response => JSON.parse(response["_body"]))
+            .catch(this.handleError);
+    }
+    delete(id) {
+        const url = `${this.recipeDeleteUrl}${id}`;
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .then(() => null)
             .catch(this.handleError);
     }
 };

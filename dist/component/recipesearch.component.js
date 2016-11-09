@@ -9,14 +9,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
+const router_1 = require('@angular/router');
+const Observable_1 = require('rxjs/Observable');
+const Subject_1 = require('rxjs/Subject');
+const ingredientsuggest_service_1 = require('../service/ingredientsuggest.service');
 let RecSearchComp = class RecSearchComp {
+    constructor(autoSearchService, router) {
+        this.autoSearchService = autoSearchService;
+        this.router = router;
+        this.searchTerms = new Subject_1.Subject();
+    }
+    // Push a search term into the observable stream.
+    search(term) {
+        this.searchTerms.next(term);
+    }
+    ngOnInit() {
+        this.autoSuggest = this.searchTerms
+            .debounceTime(300) // wait for 300ms pause in events
+            .distinctUntilChanged() // ignore if next search term is same as previous
+            .switchMap(term => term // switch to new observable each time
+            ? this.autoSearchService.ingredientSearch(term)
+            : Observable_1.Observable.of([]))
+            .catch(error => {
+            console.log(error);
+            return Observable_1.Observable.of([]);
+        });
+    }
 };
 RecSearchComp = __decorate([
     core_1.Component({
         selector: 'rec-search',
-        template: `<h3>Search</h3>`
+        templateUrl: `html/search.html`
     }), 
-    __metadata('design:paramtypes', [])
+    __metadata('design:paramtypes', [ingredientsuggest_service_1.AutoSearchService, router_1.Router])
 ], RecSearchComp);
 exports.RecSearchComp = RecSearchComp;
 //# sourceMappingURL=recipesearch.component.js.map

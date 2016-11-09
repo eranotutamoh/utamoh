@@ -23,15 +23,17 @@ let RecFormComp = class RecFormComp {
         this.model = this.recipe || this.newRecipe();
     }
     newRecipe() {
-        this.ingredients = [new ingredients_1.Ingredients('', '')];
-        return new recipedetail_1.RecDetail('', this.ingredients, '');
+        let ings = [new ingredients_1.Ingredients('', '')];
+        return new recipedetail_1.RecDetail('', ings, '');
     }
     addIngredient() {
-        this.ingredients.push(new ingredients_1.Ingredients('', ''));
+        this.model.ingredients.push(new ingredients_1.Ingredients('', ''));
+        return false;
     }
     ;
     removeIngredient(ix) {
-        this.ingredients.splice(ix, 1);
+        this.model.ingredients.splice(ix, 1);
+        return false;
     }
     ;
     updateRecipe() {

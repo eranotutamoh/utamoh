@@ -12,15 +12,19 @@ const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
 const recipesapi_service_1 = require('../service/recipesapi.service');
 let RecListComp = class RecListComp {
-    constructor(recNameService, router) {
-        this.recNameService = recNameService;
+    constructor(recService, router) {
+        this.recService = recService;
         this.router = router;
     }
     ngOnInit() {
         this.getRecNames();
     }
-    deleteRec(recipe) {
-        console.log(recipe._id, "Delete: ", recipe.name);
+    deleteRec(recipe, ix) {
+        if (!window.confirm('Delete ' + recipe.name + '? ' + ix))
+            return false;
+        this.recService
+            .delete(recipe._id)
+            .then(() => { this.recipes.splice(ix, 1); });
     }
     ;
     editRec(recipe) {
@@ -28,7 +32,7 @@ let RecListComp = class RecListComp {
         this.router.navigate(link);
     }
     getRecNames() {
-        this.recNameService.getRecNames().then(data => this.recipes = data);
+        this.recService.getRecNames().then(data => this.recipes = data);
     }
 };
 RecListComp = __decorate([
