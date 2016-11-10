@@ -13,7 +13,6 @@ import { RecSearchComp }   from './component/recipesearch.component';
 import { RecDetailComp }   from './component/recipedetail.component';
 import { RecFormComp }   from './component/recipeform.component';
 import { RecEditComp }   from './component/recipeedit.component';
-import { RecAddComp }   from './component/recipeadd.component';
 
 import { RecApiService } from './service/recipesapi.service';
 import { AutoSearchService } from './service/ingredientsuggest.service';
@@ -32,8 +31,7 @@ import { AutoSearchService } from './service/ingredientsuggest.service';
                     RecSearchComp,
                     RecDetailComp,
                     RecFormComp,
-                    RecEditComp,
-                    RecAddComp],
+                    RecEditComp ],
     providers:    [RecApiService,
                    AutoSearchService],
     bootstrap:    [ AppComponent ]

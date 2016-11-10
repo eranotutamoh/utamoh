@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
             <a routerLink="/recipeadd">Add Recipe</a>
         </nav>
         <section class=mid>
-            <h1>{{title}}</h1>
             <router-outlet></router-outlet>            
         </section>
         <section class=right></section>

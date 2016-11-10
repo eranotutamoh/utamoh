@@ -1,9 +1,9 @@
 <div id="search-component">
     <h4>Hero Search</h4>
-    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+    <input #searchBox id="search-box" [(ngModel)]="userText" (keyup)="search(searchBox.value)" />
     <div>
         <div *ngFor="let ing of autoSuggest | async"
-             (click)="gotoDetail(hero)" class="search-result" >
+             (click)="searchRecipes(ing, searchBox)" class="search-result" >
             {{ing}}
         </div>
     </div>

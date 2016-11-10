@@ -15,6 +15,7 @@ export class RecSearchComp implements OnInit {
     autoSuggest: Observable<string[]>;
 
     private searchTerms = new Subject<string>();
+    private userText;
 
     constructor( private autoSearchService: AutoSearchService,private router: Router) {}
 
@@ -24,17 +25,25 @@ export class RecSearchComp implements OnInit {
     }
     ngOnInit(): void {
         this.autoSuggest = this.searchTerms
-            .debounceTime(300)        // wait for 300ms pause in events
-            .distinctUntilChanged()   // ignore if next search term is same as previous
-            .switchMap(term => term   // switch to new observable each time
-                // return the http search observable
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .switchMap(term => term
+
                 ? this.autoSearchService.ingredientSearch(term)
-                // or the observable of empty heroes if no search term
+
                 : Observable.of<string[]>([]))
             .catch(error => {
                 console.log(error);
                 return Observable.of<string[]>([]);
             });
+    }
+
+    searchRecipes(ingredient, input) {
+        console.log('::',ingredient);
+        this.userText = "";
+        this.search('');
+        input.focus();
+
     }
 
 }

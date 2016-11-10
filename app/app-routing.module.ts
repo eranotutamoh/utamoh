@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RecListComp }   from './component/recipes.component';
 import { RecSearchComp }   from './component/recipesearch.component';
 import { RecDetailComp }   from './component/recipedetail.component';
-import { RecAddComp }   from './component/recipeadd.component';
+import { RecFormComp }   from './component/recipeform.component';
 import { RecEditComp }   from './component/recipeedit.component';
 
 const routes: Routes = [
@@ -31,7 +31,7 @@ const routes: Routes = [
     },
     {
         path: 'recipeadd',
-        component: RecAddComp
+        component: RecFormComp
     }
 ];
 

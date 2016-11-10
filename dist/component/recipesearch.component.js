@@ -25,15 +25,21 @@ let RecSearchComp = class RecSearchComp {
     }
     ngOnInit() {
         this.autoSuggest = this.searchTerms
-            .debounceTime(300) // wait for 300ms pause in events
-            .distinctUntilChanged() // ignore if next search term is same as previous
-            .switchMap(term => term // switch to new observable each time
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .switchMap(term => term
             ? this.autoSearchService.ingredientSearch(term)
             : Observable_1.Observable.of([]))
             .catch(error => {
             console.log(error);
             return Observable_1.Observable.of([]);
         });
+    }
+    searchRecipes(ingredient, input) {
+        console.log('::', ingredient);
+        this.userText = "";
+        this.search('');
+        input.focus();
     }
 };
 RecSearchComp = __decorate([
