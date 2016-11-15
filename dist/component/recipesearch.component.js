@@ -13,17 +13,23 @@ const router_1 = require('@angular/router');
 const Observable_1 = require('rxjs/Observable');
 const Subject_1 = require('rxjs/Subject');
 const ingredientsuggest_service_1 = require('../service/ingredientsuggest.service');
+const recipesapi_service_1 = require('../service/recipesapi.service');
 let RecSearchComp = class RecSearchComp {
-    constructor(autoSearchService, router) {
+    constructor(recService, autoSearchService, router) {
+        this.recService = recService;
         this.autoSearchService = autoSearchService;
         this.router = router;
         this.searchTerms = new Subject_1.Subject();
+        this.searchParameters = [];
     }
     // Push a search term into the observable stream.
     search(term) {
         this.searchTerms.next(term);
+        this.listener = this.listener || this.autoSuggest.subscribe(result => { if (result.length == 1)
+            this.searchRecipes(result[0]); });
     }
     ngOnInit() {
+        this.searchInput = document.querySelector('#search-box');
         this.autoSuggest = this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
@@ -35,11 +41,32 @@ let RecSearchComp = class RecSearchComp {
             return Observable_1.Observable.of([]);
         });
     }
-    searchRecipes(ingredient, input) {
-        console.log('::', ingredient);
+    searchRecipes(ingredient) {
+        let searchString = this.formatSearch(ingredient);
+        this.listener.unsubscribe();
+        this.listener = undefined;
+        this.getRecNames(searchString);
         this.userText = "";
-        this.search('');
-        input.focus();
+        this.searchTerms.next('');
+        this.searchInput.focus();
+    }
+    getRecNames(searchString) {
+        this.recService.getRecBySearch(searchString).then(data => this.recipes = data);
+    }
+    formatSearch(ingredient) {
+        let searchString = '';
+        this.searchParameters.push(ingredient);
+        let j = 2;
+        for (let i = 0; i < this.searchParameters.length; i++) {
+            let par = (i == 0) ? '?ing1=' : '&ing' + j++ + '=';
+            searchString += par + this.searchParameters[i];
+        }
+        return searchString;
+    }
+    clear() {
+        this.searchParameters.length = 0;
+        this.recipes.length = 0;
+        this.searchInput.focus();
     }
 };
 RecSearchComp = __decorate([
@@ -47,7 +74,7 @@ RecSearchComp = __decorate([
         selector: 'rec-search',
         templateUrl: `html/search.html`
     }), 
-    __metadata('design:paramtypes', [ingredientsuggest_service_1.AutoSearchService, router_1.Router])
+    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, ingredientsuggest_service_1.AutoSearchService, router_1.Router])
 ], RecSearchComp);
 exports.RecSearchComp = RecSearchComp;
 //# sourceMappingURL=recipesearch.component.js.map

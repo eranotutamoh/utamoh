@@ -5,7 +5,6 @@ import { FormsModule }   from '@angular/forms';
 import { AppRoutingModule }   from './app-routing.module';
 import { HttpModule }    from '@angular/http';
 
-
 import { AppComponent }  from './app.component';
 import {RecLinkComp}     from './component/recipelink.component';
 import { RecListComp }   from './component/recipes.component';

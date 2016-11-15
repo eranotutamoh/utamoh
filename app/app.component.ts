@@ -7,12 +7,8 @@ import { Component } from '@angular/core';
             <a routerLink="/search">Search</a>
             <a routerLink="/recipeadd">Add Recipe</a>
         </nav>
-        <section class=mid>
-            <router-outlet></router-outlet>            
-        </section>
-        <section class=right></section>
-            
-      `
+        <router-outlet></router-outlet>                
+        `
 })
 export class AppComponent {
     title = 'Recipe Database';

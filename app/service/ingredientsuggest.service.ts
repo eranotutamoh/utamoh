@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 export class AutoSearchService {
     constructor(private http: Http) {}
 
-    ingredients: String[];
-
     ingredientSearch(term: string): Observable<string[]> {
 
         return this.http

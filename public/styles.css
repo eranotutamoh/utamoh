@@ -14,7 +14,8 @@ html {
     width: 1010px;
     border: 7px solid #542800;
     border-top: none;
-    border-radius: 0 0 10px 10px
+    border-radius: 0 0 10px 10px;
+    min-height: 630px;
 }
 nav, section {
     display: inline-block;
@@ -81,19 +82,19 @@ button#clear {
 .hot {
     background-color: crimson;
 }
-.recipes {
+.basic-list {
     list-style: none;
     padding:0;
 }
-.recipes li {
+.basic-list li {
     margin: 0 0 15px 0;
 }
-.recipes li a {
+.mid .basic-list li a {
     display: inline-block;
     margin-left: 25px;
     width: 250px;
 }
-.recipes li button {
+.basic-list li button {
     vertical-align: top;
 }
 .ingredients {

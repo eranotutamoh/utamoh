@@ -14,6 +14,7 @@ require('rxjs/add/operator/toPromise');
 let RecApiService = class RecApiService {
     constructor(http) {
         this.http = http;
+        this.recipeSearchUrl = 'api/ingredientsearch';
         this.recipeNamesUrl = 'api/recipes';
         this.recipeDetailUrl = 'api/recipe/';
         this.recipeUpdateUrl = 'api/recipeedit/';
@@ -22,8 +23,14 @@ let RecApiService = class RecApiService {
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     handleError(error) {
-        console.error('An error occurred', error); // for demo purposes only
+        console.error('An error occurred', error);
         return Promise.reject(error.message || error);
+    }
+    getRecBySearch(searchParams) {
+        return this.http.get(`${this.recipeSearchUrl}${searchParams}`)
+            .toPromise()
+            .then(response => JSON.parse(response["_body"]))
+            .catch(this.handleError);
     }
     getRecNames() {
         return this.http.get(this.recipeNamesUrl)

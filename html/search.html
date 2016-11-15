@@ -1,10 +1,23 @@
-<div id="search-component">
-    <h4>Hero Search</h4>
-    <input #searchBox id="search-box" [(ngModel)]="userText" (keyup)="search(searchBox.value)" />
-    <div>
-        <div *ngFor="let ing of autoSuggest | async"
-             (click)="searchRecipes(ing, searchBox)" class="search-result" >
-            {{ing}}
-        </div>
+<section class=mid>
+    <div id="search-component">
+        <p>Enter ingredients one at a time</p>
+        <input #searchBox id="search-box" [(ngModel)]="userText" (keyup)="search(searchBox.value)" />
+        <button id="clear" (click)="clear()">Clear Search</button>
+        <ul class="basic-list">
+            <li *ngFor="let ing of autoSuggest | async"
+                 (click)="searchRecipes(ing)" class="search-result" >
+                {{ing}}
+            </li>
+        </ul>
     </div>
-</div>
+
+</section>
+<section class=right>
+    <p>Recipes with: {{searchParameters}}</p>
+    <ul class="basic-list">
+        <li *ngFor="let recipe of recipes">
+            <rec-link [recipe]="recipe"></rec-link>
+        </li>
+    </ul>
+
+</section>

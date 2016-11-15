@@ -1,4 +1,6 @@
-<form (ngSubmit)="onSubmit()" action="/api/recipeadd" method="post" >
+<section class=mid>
+
+    <form (ngSubmit)="onSubmit()" action="/api/recipeadd" method="post" >
     <label>Recipe name</label>
     <input type="text" name="name" class="wide" [(ngModel)]="model.name" required>
 
@@ -22,3 +24,6 @@
 
         <button type="submit"  >Submit</button>
 </form>
+
+</section>
+<section class=right></section>

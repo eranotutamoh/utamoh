@@ -7,6 +7,7 @@ import { RecDetail } from '../abstract/recipedetail';
 @Injectable()
 export class RecApiService {
 
+    private recipeSearchUrl = 'api/ingredientsearch';
     private recipeNamesUrl = 'api/recipes';
     private recipeDetailUrl = 'api/recipe/';
     private recipeUpdateUrl = 'api/recipeedit/';
@@ -17,10 +18,15 @@ export class RecApiService {
     constructor(private http: Http) { }
 
     private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
+        console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     }
-
+    getRecBySearch(searchParams: string) : Promise<RecName[]> {
+        return this.http.get(`${this.recipeSearchUrl}${searchParams}`)
+            .toPromise()
+            .then(response => JSON.parse(response["_body"]) )
+            .catch(this.handleError);
+    }
     getRecNames() : Promise<RecName[]> {
         return this.http.get(this.recipeNamesUrl)
             .toPromise()
