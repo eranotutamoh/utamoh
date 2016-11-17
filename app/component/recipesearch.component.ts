@@ -15,53 +15,49 @@ export class RecSearchComp implements OnInit {
 
     autoSuggest: Observable<string[]>;
     private searchTerms = new Subject<string>();
-    private userText;
-    private recipes: RecName[];
+    private recipes:  RecName[];
     private searchParameters =  [];
     private searchInput;
-    private listener;
-
-
+    private list = [];
 
     constructor(private recService: RecApiService, private autoSearchService: AutoSearchService,private router: Router) {}
 
-    // Push a search term into the observable stream.
-    search(term: string): void {
-        this.searchTerms.next(term);
-        this.listener = this.listener || this.autoSuggest.subscribe(result => {if(result.length == 1) this.searchRecipes(result[0]) });
-    }
     ngOnInit(): void {
         this.searchInput = document.querySelector('#search-box');
+        this.autoSuggester();
+    }
+    search(term: string, keyPressed): void {
+        this.searchTerms.next(term);
+        if(keyPressed == 13 && this.list[0])   this.searchRecipes(this.list[0]);
+    }
+    autoSuggester() {
         this.autoSuggest = this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
             .switchMap(term => term
                 ? this.autoSearchService.ingredientSearch(term)
                 : Observable.of<string[]>([]))
-
             .catch(error => {
                 console.log(error);
                 return Observable.of<string[]>([]);
             });
+        this.autoSuggest.subscribe(result => { this.autoSelect(result)});
     }
-
+    autoSelect(list) {
+            this.list = list;
+            if(this.list.length == 1)   this.searchRecipes(this.list[0]);
+    }
     searchRecipes(ingredient): void {
         let searchString = this.formatSearch(ingredient);
-        this.listener.unsubscribe();
-        this.listener = undefined;
-
         this.getRecNames(searchString);
-
-        this.userText = "";
         this.searchTerms.next('');
+        this.searchInput.value = '';
         this.searchInput.focus();
-
     }
 
     getRecNames(searchString) : void {
         this.recService.getRecBySearch(searchString).then(data => this.recipes = data);
     }
-
     formatSearch(ingredient): string {
         let searchString = '';
         this.searchParameters.push(ingredient);
@@ -72,10 +68,10 @@ export class RecSearchComp implements OnInit {
         }
         return searchString;
     }
-
     clear():void {
         this.searchParameters.length = 0;
-        this.recipes.length = 0;
+        this.recipes = [];
+        this.searchInput.value = '';
         this.searchInput.focus();
     }
 

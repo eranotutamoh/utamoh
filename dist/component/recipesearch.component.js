@@ -21,15 +21,18 @@ let RecSearchComp = class RecSearchComp {
         this.router = router;
         this.searchTerms = new Subject_1.Subject();
         this.searchParameters = [];
-    }
-    // Push a search term into the observable stream.
-    search(term) {
-        this.searchTerms.next(term);
-        this.listener = this.listener || this.autoSuggest.subscribe(result => { if (result.length == 1)
-            this.searchRecipes(result[0]); });
+        this.list = [];
     }
     ngOnInit() {
         this.searchInput = document.querySelector('#search-box');
+        this.autoSuggester();
+    }
+    search(term, keyPressed) {
+        this.searchTerms.next(term);
+        if (keyPressed == 13 && this.list[0])
+            this.searchRecipes(this.list[0]);
+    }
+    autoSuggester() {
         this.autoSuggest = this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
@@ -40,14 +43,18 @@ let RecSearchComp = class RecSearchComp {
             console.log(error);
             return Observable_1.Observable.of([]);
         });
+        this.autoSuggest.subscribe(result => { this.autoSelect(result); });
+    }
+    autoSelect(list) {
+        this.list = list;
+        if (this.list.length == 1)
+            this.searchRecipes(this.list[0]);
     }
     searchRecipes(ingredient) {
         let searchString = this.formatSearch(ingredient);
-        this.listener.unsubscribe();
-        this.listener = undefined;
         this.getRecNames(searchString);
-        this.userText = "";
         this.searchTerms.next('');
+        this.searchInput.value = '';
         this.searchInput.focus();
     }
     getRecNames(searchString) {
@@ -65,7 +72,8 @@ let RecSearchComp = class RecSearchComp {
     }
     clear() {
         this.searchParameters.length = 0;
-        this.recipes.length = 0;
+        this.recipes = [];
+        this.searchInput.value = '';
         this.searchInput.focus();
     }
 };

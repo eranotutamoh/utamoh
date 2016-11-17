@@ -89,6 +89,9 @@ button#clear {
 .basic-list li {
     margin: 0 0 15px 0;
 }
+.basic-list li.timmy {
+   font-style: italic;
+}
 .mid .basic-list li a {
     display: inline-block;
     margin-left: 25px;
