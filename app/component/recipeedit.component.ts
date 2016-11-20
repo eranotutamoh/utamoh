@@ -6,9 +6,7 @@ import { RecApiService } from '../service/recipesapi.service';
 
 @Component({
     selector: 'recipe-edit',
-    template: `<div *ngIf="recipe">
-                    <rec-form [recipe]="recipe"></rec-form>
-                </div>`
+    template: `<rec-form  *ngIf="recipe" [recipe]="recipe"></rec-form>`
 })
 
 export class RecEditComp implements OnInit {

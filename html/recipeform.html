@@ -1,6 +1,7 @@
 <section class=mid>
-
-    <form (ngSubmit)="onSubmit()" action="/api/recipeadd" method="post" >
+    <h1 *ngIf="recipe">Edit {{recipe.name}}</h1>
+    <h1 *ngIf="!recipe">Add Recipe</h1>
+    <form (keydown.enter)="$event.preventDefault()" (ngSubmit)="onSubmit()" action="/api/recipeadd" method="post"  autocomplete="off" >
     <label>Recipe name</label>
     <input type="text" name="name" class="wide" [(ngModel)]="model.name" required>
 
@@ -9,15 +10,22 @@
     <div *ngFor="let ing of model.ingredients; let ix = index">
         <div class="ingredients">
             <label>Name</label>
-            <input type="text" name="iname" [(ngModel)]="model.ingredients[ix].name" [ngModelOptions]="{standalone: true}" required>
+            <input (keyup)="search($event)" (focus)="prepareSearch($event.currentTarget)"  type="text" name="iname" [(ngModel)]="model.ingredients[ix].name" [ngModelOptions]="{standalone: true}" required>
+
             <label>Quantity</label>
             <input type="text" name="quantity" class="small" [(ngModel)]="model.ingredients[ix].quantity" [ngModelOptions]="{standalone: true}">
-            <button *ngIf="ix>0" class="takeaway" (click)="removeIngredient(ix)">-</button><br>
+            <button *ngIf="ix>0" class="takeaway" (mousedown)="removeIngredient(ix)">-</button><br>
             <label>Method</label>
             <input type="text" name="method"  [(ngModel)]="model.ingredients[ix].method" [ngModelOptions]="{standalone: true}">
 
         </div>
     </div>
+        <ul class="basic-list" id="ingredients-ul">
+            <li *ngFor="let ing of autoSuggest | async; let isFirst = first"
+                (click)="completeSearch(ing)"  [class.timmy]="isFirst" >
+                {{ing}}
+            </li>
+        </ul>
     <button class="another" (click)="addIngredient()">+</button>
     <label class="beforeThis">Instructions</label>
     <textarea rows="7" cols="51" name="instructions" class="wide" [(ngModel)]="model.instructions" required></textarea>

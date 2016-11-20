@@ -82,6 +82,14 @@ button#clear {
 .hot {
     background-color: crimson;
 }
+#ingredients-ul {
+    position: absolute;
+}
+#ingredients-ul li {
+    background-color: #542800;
+    padding: 5px 10px 10px;
+    margin: 0;
+}
 .basic-list {
     list-style: none;
     padding:0;

@@ -29,9 +29,7 @@ let RecEditComp = class RecEditComp {
 RecEditComp = __decorate([
     core_1.Component({
         selector: 'recipe-edit',
-        template: `<div *ngIf="recipe">
-                    <rec-form [recipe]="recipe"></rec-form>
-                </div>`
+        template: `<rec-form  *ngIf="recipe" [recipe]="recipe"></rec-form>`
     }), 
     __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.ActivatedRoute])
 ], RecEditComp);

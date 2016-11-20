@@ -164,9 +164,13 @@ module.exports.listIngredients = function (req, res) {
                     sendJsonResponse(res, 404, err);
                     return;
                 }
-                var reg1 = new RegExp("^[a-zA-Z\\s]*$"); // Remove recipe sub headings
-                var reg2 = new RegExp("\\b"+req.query.ing, 'i')
-                var list = list.filter(function(ingredient) {return reg1.test(ingredient);}).filter(function(ingredient) {return reg2.test(ingredient);});
+                try {
+                    console.log('Ing Search:', req.query.ing);
+                    var reg1 = new RegExp("^[a-zA-Z\\s]*$"); // Remove recipe sub headings
+                    var reg2 = new RegExp("\\b"+req.query.ing, 'i')
+                    var list = list.filter(function(ingredient) {return reg1.test(ingredient);}).filter(function(ingredient) {return reg2.test(ingredient);});
+                }  catch(error) { console.log('Regex' , error) }
+
                 sendJsonResponse(res, 200, list);
             });
 };

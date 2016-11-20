@@ -12,15 +12,53 @@ const core_1 = require('@angular/core');
 const recipedetail_1 = require('../abstract/recipedetail');
 const ingredients_1 = require('../abstract/ingredients');
 const router_1 = require('@angular/router');
+const Observable_1 = require('rxjs/Observable');
+const Subject_1 = require('rxjs/Subject');
+const ingredientsuggest_service_1 = require('../service/ingredientsuggest.service');
 const recipesapi_service_1 = require('../service/recipesapi.service');
 let RecFormComp = class RecFormComp {
-    constructor(recService, router) {
+    constructor(recService, router, autoSearchService) {
         this.recService = recService;
         this.router = router;
+        this.autoSearchService = autoSearchService;
+        this.searchTerms = new Subject_1.Subject();
         this.submitted = false;
+        this.list = [];
+        this.searchWord = [];
     }
     ngOnInit() {
         this.model = this.recipe || this.newRecipe();
+        this.autoSuggester();
+        this.listUl = document.querySelector('#ingredients-ul');
+    }
+    search(event) {
+        this.searchWord.push(String.fromCharCode(event.keyCode));
+        this.searchTerms.next(this.searchWord.join(''));
+        if (event.keyCode == 13 && this.list[0])
+            this.completeSearch();
+    }
+    prepareSearch(target) {
+        this.listUl.style.top = target.offsetTop + 6 + 'px';
+        this.listUl.style.left = target.offsetLeft + 'px';
+        this.focusedInput = target;
+    }
+    completeSearch() {
+        this.focusedInput.value = this.list[0];
+        this.searchTerms.next('');
+        this.searchWord = [];
+    }
+    autoSuggester() {
+        this.autoSuggest = this.searchTerms
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .switchMap(term => term
+            ? this.autoSearchService.ingredientSearch(term)
+            : Observable_1.Observable.of([]))
+            .catch(error => {
+            console.log(error);
+            return Observable_1.Observable.of([]);
+        });
+        this.autoSuggest.subscribe(result => { this.list = result; });
     }
     newRecipe() {
         let ings = [new ingredients_1.Ingredients('', '')];
@@ -65,7 +103,7 @@ RecFormComp = __decorate([
         selector: 'rec-form',
         templateUrl: 'html/recipeform.html'
     }), 
-    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.Router])
+    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.Router, ingredientsuggest_service_1.AutoSearchService])
 ], RecFormComp);
 exports.RecFormComp = RecFormComp;
 //# sourceMappingURL=recipeform.component.js.map

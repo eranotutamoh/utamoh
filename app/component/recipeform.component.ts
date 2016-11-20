@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import {RecDetail}  from '../abstract/recipedetail';
 import {Ingredients}  from '../abstract/ingredients';
 import { Router } from '@angular/router';
+import { Observable }        from 'rxjs/Observable';
+import { Subject }           from 'rxjs/Subject';
+import { AutoSearchService } from '../service/ingredientsuggest.service';
 import { RecApiService } from '../service/recipesapi.service';
 
 @Component({
@@ -14,16 +17,52 @@ export class RecFormComp {
     @Input()
     recipe: RecDetail;
 
+
+    private autoSuggest: Observable<string[]>;
+    private searchTerms = new Subject<string>();
+    private model: RecDetail;
+    private submitted = false;
+    private list = [];
+    private listUl;
+    private searchWord = [];
+    private focusedInput;
+
+    constructor(private recService: RecApiService, private router: Router, private autoSearchService: AutoSearchService, ) { }
+
     ngOnInit(): void {
         this.model = this.recipe || this.newRecipe() ;
+        this.autoSuggester();
+        this.listUl = document.querySelector('#ingredients-ul');
     }
-    //ingredients: Ingredients[];
-    model: RecDetail;
-    submitted = false;
-
-    constructor(private recService: RecApiService, private router: Router ) { }
-
-    newRecipe() {
+    search(event): void {
+        this.searchWord.push(String.fromCharCode(event.keyCode));
+        this.searchTerms.next(this.searchWord.join(''));
+        if(event.keyCode == 13 && this.list[0]) this.completeSearch();
+    }
+    prepareSearch(target) {
+        this.listUl.style.top = target.offsetTop+6+'px';
+        this.listUl.style.left = target.offsetLeft+'px';
+        this.focusedInput = target;
+    }
+    completeSearch() {
+        this.focusedInput.value = this.list[0];
+        this.searchTerms.next('');
+        this.searchWord = [];
+    }
+    autoSuggester(): void {
+        this.autoSuggest = this.searchTerms
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .switchMap(term => term
+                ? this.autoSearchService.ingredientSearch(term)
+                : Observable.of<string[]>([]))
+            .catch(error => {
+                console.log(error);
+                return Observable.of<string[]>([]);
+            });
+        this.autoSuggest.subscribe(result => { this.list = result});
+    }
+    newRecipe(): RecDetail {
         let ings = [new Ingredients('','')]
         return new RecDetail('',ings,'');
     }
