@@ -1,8 +1,8 @@
 <section class=mid>
     <div id="search-component">
         <p>Enter ingredients one at a time</p>
-        <input #searchBox id="search-box"  (keyup)="search(searchBox.value, $event.keyCode)" />
-        <button id="clear" (click)="clear()" >Clear</button>
+        <input #searchBox id="search-box"  [hasFocus]="!searchParameters.length" (keyup)="search(searchBox.value, $event.keyCode)" />
+        <button id="clear" (click)="clear()" >Clear results</button>
         <ul class="basic-list">
             <li *ngFor="let ing of autoSuggest | async; let isFirst = first"
                  (click)="searchRecipes(ing)"  [class.timmy]="isFirst" >
@@ -13,7 +13,7 @@
 
 </section>
 <section class=right>
-    <p>Recipes with: {{searchParameters}}</p>
+    <p>Recipes with: {{searchParameters.join(' , ')}}</p>
     <ul class="basic-list">
         <li *ngFor="let recipe of recipes">
             <rec-link [recipe]="recipe"></rec-link>

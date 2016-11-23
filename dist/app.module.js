@@ -21,6 +21,9 @@ const recipesearch_component_1 = require('./component/recipesearch.component');
 const recipedetail_component_1 = require('./component/recipedetail.component');
 const recipeform_component_1 = require('./component/recipeform.component');
 const recipeedit_component_1 = require('./component/recipeedit.component');
+const setFocus_directive_1 = require('./directive/setFocus.directive');
+const capitilize_directive_1 = require('./directive/capitilize.directive');
+const utility_pipes_1 = require('./pipes/utility.pipes');
 const recipesapi_service_1 = require('./service/recipesapi.service');
 const ingredientsuggest_service_1 = require('./service/ingredientsuggest.service');
 let AppModule = class AppModule {
@@ -38,7 +41,10 @@ AppModule = __decorate([
             recipesearch_component_1.RecSearchComp,
             recipedetail_component_1.RecDetailComp,
             recipeform_component_1.RecFormComp,
-            recipeedit_component_1.RecEditComp],
+            recipeedit_component_1.RecEditComp,
+            capitilize_directive_1.CapitalizeDirective,
+            setFocus_directive_1.SetFocusDirective,
+            utility_pipes_1.IngredientFormat],
         providers: [recipesapi_service_1.RecApiService,
             ingredientsuggest_service_1.AutoSearchService],
         bootstrap: [app_component_1.AppComponent]

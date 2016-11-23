@@ -28,9 +28,6 @@ let RecDetailComp = class RecDetailComp {
     getRecDetail(id) {
         this.recNameService.getRecDetail(id).then(data => this.recipe = data);
     }
-    goBack() {
-        this.location.back();
-    }
 };
 RecDetailComp = __decorate([
     core_1.Component({

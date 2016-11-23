@@ -29,8 +29,5 @@ export class RecDetailComp implements OnInit {
         this.recNameService.getRecDetail(id).then(data => this.recipe = data);
     }
 
-    goBack(): void {
-        this.location.back();
-    }
 }
 

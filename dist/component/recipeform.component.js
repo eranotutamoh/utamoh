@@ -23,29 +23,30 @@ let RecFormComp = class RecFormComp {
         this.autoSearchService = autoSearchService;
         this.searchTerms = new Subject_1.Subject();
         this.submitted = false;
-        this.list = [];
-        this.searchWord = [];
+        this.dynamicIngredientList = [];
+        this.ingIndex = 0;
     }
     ngOnInit() {
         this.model = this.recipe || this.newRecipe();
+        this.resetFocus();
         this.autoSuggester();
         this.listUl = document.querySelector('#ingredients-ul');
     }
-    search(event) {
-        this.searchWord.push(String.fromCharCode(event.keyCode));
-        this.searchTerms.next(this.searchWord.join(''));
-        if (event.keyCode == 13 && this.list[0])
-            this.completeSearch();
-    }
-    prepareSearch(target) {
+    prepareSearch(target, index) {
+        this.searchTerms.next('');
         this.listUl.style.top = target.offsetTop + 6 + 'px';
         this.listUl.style.left = target.offsetLeft + 'px';
-        this.focusedInput = target;
+        this.ingIndex = index;
     }
-    completeSearch() {
-        this.focusedInput.value = this.list[0];
+    search(event) {
+        this.searchTerms.next(this.model.ingredients[this.ingIndex].name);
+        if (event.keyCode == 13 && this.dynamicIngredientList[0])
+            this.completeSearch(this.dynamicIngredientList[0]);
+    }
+    completeSearch(ing) {
+        this.model.ingredients[this.ingIndex].name = ing;
+        this.focused[this.ingIndex] = [false, true];
         this.searchTerms.next('');
-        this.searchWord = [];
     }
     autoSuggester() {
         this.autoSuggest = this.searchTerms
@@ -58,31 +59,43 @@ let RecFormComp = class RecFormComp {
             console.log(error);
             return Observable_1.Observable.of([]);
         });
-        this.autoSuggest.subscribe(result => { this.list = result; });
-    }
-    newRecipe() {
-        let ings = [new ingredients_1.Ingredients('', '')];
-        return new recipedetail_1.RecDetail('', ings, '');
+        this.autoSuggest.subscribe(result => { this.dynamicIngredientList = result; });
     }
     addIngredient() {
+        this.focused.push([true, false]);
         this.model.ingredients.push(new ingredients_1.Ingredients('', ''));
         return false;
     }
-    ;
     removeIngredient(ix) {
         this.model.ingredients.splice(ix, 1);
-        return false;
+        this.searchTerms.next('');
+        this.resetFocus();
+        this.ingIndex = this.model.ingredients.length - 1;
     }
     ;
     updateRecipe() {
         let link = ['/recipe', this.recipe._id];
-        ;
         this.recService.update(this.model)
             .then(() => this.router.navigate(link));
     }
     addRecipe() {
         this.recService.create(this.model)
             .then(data => this.router.navigate(['/recipe', data._id]));
+    }
+    newRecipe() {
+        let ings = [new ingredients_1.Ingredients('', '', '')];
+        return new recipedetail_1.RecDetail('', ings, '');
+    }
+    resetFocus() {
+        this.focused = [];
+        for (let ing in this.model.ingredients) {
+            this.focused.push([false, false]);
+        }
+    }
+    removeFocus(ix, el) {
+        this.searchTerms.next('');
+        if (this.focused[ix])
+            this.focused[ix][el] = false;
     }
     onSubmit() {
         if (this.model._id)
@@ -91,8 +104,6 @@ let RecFormComp = class RecFormComp {
             this.addRecipe();
         this.submitted = true;
     }
-    // TODO: Remove this when we're done
-    get diagnostic() { return JSON.stringify(this.model); }
 };
 __decorate([
     core_1.Input(), 

@@ -1,6 +1,7 @@
 <section class=mid>
+        <h1>Recipes</h1>
         <ul class="basic-list">
-                <li *ngFor="let recipe of recipes; let index = index" [class.yo]="recipe === selectedRecipe">
+                <li *ngFor="let recipe of recipes; let index = index" >
                         <button class="delete" (click)="deleteRec(recipe, index)" >Delete</button>
                         <button class="edit"  (click)="editRec(recipe)" >Edit</button>
                         <rec-link [recipe]="recipe"></rec-link>

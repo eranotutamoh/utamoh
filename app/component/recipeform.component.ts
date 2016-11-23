@@ -14,40 +14,40 @@ import { RecApiService } from '../service/recipesapi.service';
 
 export class RecFormComp {
 
-    @Input()
-    recipe: RecDetail;
-
+    @Input() recipe: RecDetail;
 
     private autoSuggest: Observable<string[]>;
     private searchTerms = new Subject<string>();
     private model: RecDetail;
     private submitted = false;
-    private list = [];
+    private dynamicIngredientList = [];
     private listUl;
-    private searchWord = [];
-    private focusedInput;
+    private ingIndex = 0;
+    private focused: Array<Boolean>[];
 
-    constructor(private recService: RecApiService, private router: Router, private autoSearchService: AutoSearchService, ) { }
+    constructor(private recService: RecApiService, private router: Router, private autoSearchService: AutoSearchService) { }
 
     ngOnInit(): void {
-        this.model = this.recipe || this.newRecipe() ;
+        this.model = this.recipe || this.newRecipe();
+        this.resetFocus();
         this.autoSuggester();
         this.listUl = document.querySelector('#ingredients-ul');
     }
-    search(event): void {
-        this.searchWord.push(String.fromCharCode(event.keyCode));
-        this.searchTerms.next(this.searchWord.join(''));
-        if(event.keyCode == 13 && this.list[0]) this.completeSearch();
-    }
-    prepareSearch(target) {
-        this.listUl.style.top = target.offsetTop+6+'px';
-        this.listUl.style.left = target.offsetLeft+'px';
-        this.focusedInput = target;
-    }
-    completeSearch() {
-        this.focusedInput.value = this.list[0];
+
+    prepareSearch(target, index) {
         this.searchTerms.next('');
-        this.searchWord = [];
+        this.listUl.style.top = target.offsetTop + 6 + 'px';
+        this.listUl.style.left = target.offsetLeft + 'px';
+        this.ingIndex = index;
+    }
+    search(event): void {
+        this.searchTerms.next(this.model.ingredients[this.ingIndex].name);
+        if (event.keyCode == 13 && this.dynamicIngredientList[0]) this.completeSearch(this.dynamicIngredientList[0]);
+    }
+    completeSearch(ing) {
+        this.model.ingredients[this.ingIndex].name = ing;
+        this.focused[this.ingIndex] = [false,true];
+        this.searchTerms.next('');
     }
     autoSuggester(): void {
         this.autoSuggest = this.searchTerms
@@ -60,23 +60,23 @@ export class RecFormComp {
                 console.log(error);
                 return Observable.of<string[]>([]);
             });
-        this.autoSuggest.subscribe(result => { this.list = result});
+        this.autoSuggest.subscribe(result => { this.dynamicIngredientList = result });
     }
-    newRecipe(): RecDetail {
-        let ings = [new Ingredients('','')]
-        return new RecDetail('',ings,'');
-    }
+
     addIngredient(): boolean {
-        this.model.ingredients.push(new Ingredients('',''));
+        this.focused.push([true,false]);
+        this.model.ingredients.push(new Ingredients('', ''));
         return false;
+    }
+    removeIngredient(ix): void {
+        this.model.ingredients.splice(ix, 1);
+        this.searchTerms.next('');
+        this.resetFocus();
+        this.ingIndex = this.model.ingredients.length-1;
     };
-    removeIngredient(ix): boolean {
-        this.model.ingredients.splice(ix,1);
-        return false;
-    };
+
     updateRecipe(): void {
         let link = ['/recipe', this.recipe._id];
-        ;
         this.recService.update(this.model)
             .then(() => this.router.navigate(link));
     }
@@ -84,12 +84,23 @@ export class RecFormComp {
         this.recService.create(this.model)
             .then(data => this.router.navigate(['/recipe', data._id]));
     }
+    newRecipe(): RecDetail {
+        let ings = [new Ingredients('', '','')]
+        return new RecDetail('', ings, '');
+    }
+    resetFocus() {
+        this.focused = [];
+        for(let ing in this.model.ingredients ) {
+            this.focused.push([false,false]);
+        }
+    }
+    removeFocus(ix, el) {
+        this.searchTerms.next('');
+        if(this.focused[ix]) this.focused[ix][el] = false;
+    }
     onSubmit() {
-        if(this.model._id) this.updateRecipe();
+        if (this.model._id) this.updateRecipe();
         else this.addRecipe();
         this.submitted = true;
     }
-
-    // TODO: Remove this when we're done
-    get diagnostic() { return JSON.stringify(this.model); }
 }

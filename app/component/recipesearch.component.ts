@@ -18,7 +18,7 @@ export class RecSearchComp implements OnInit {
     private recipes:  RecName[];
     private searchParameters =  [];
     private searchInput;
-    private list = [];
+    private dynamicIngredientList = [];
 
     constructor(private recService: RecApiService, private autoSearchService: AutoSearchService,private router: Router) {}
 
@@ -26,9 +26,10 @@ export class RecSearchComp implements OnInit {
         this.searchInput = document.querySelector('#search-box');
         this.autoSuggester();
     }
+
     search(term: string, keyPressed): void {
         this.searchTerms.next(term);
-        if(keyPressed == 13 && this.list[0])   this.searchRecipes(this.list[0]);
+        if(keyPressed == 13 && this.dynamicIngredientList[0])   this.searchRecipes(this.dynamicIngredientList[0]);
     }
     autoSuggester() {
         this.autoSuggest = this.searchTerms
@@ -44,19 +45,18 @@ export class RecSearchComp implements OnInit {
         this.autoSuggest.subscribe(result => { this.autoSelect(result)});
     }
     autoSelect(list) {
-            this.list = list;
-            if(this.list.length == 1)   this.searchRecipes(this.list[0]);
+            this.dynamicIngredientList = list;
+            if(this.dynamicIngredientList.length == 1)   this.searchRecipes(this.dynamicIngredientList[0]);
     }
+
+
+
     searchRecipes(ingredient): void {
         let searchString = this.formatSearch(ingredient);
         this.getRecNames(searchString);
         this.searchTerms.next('');
         this.searchInput.value = '';
         this.searchInput.focus();
-    }
-
-    getRecNames(searchString) : void {
-        this.recService.getRecBySearch(searchString).then(data => this.recipes = data);
     }
     formatSearch(ingredient): string {
         let searchString = '';
@@ -68,11 +68,14 @@ export class RecSearchComp implements OnInit {
         }
         return searchString;
     }
+    getRecNames(searchString) : void {
+        this.recService.getRecBySearch(searchString).then(data => this.recipes = data);
+    }
+
     clear():void {
         this.searchParameters.length = 0;
         this.recipes = [];
         this.searchInput.value = '';
-        this.searchInput.focus();
     }
 
 }

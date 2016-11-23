@@ -21,7 +21,7 @@ let RecSearchComp = class RecSearchComp {
         this.router = router;
         this.searchTerms = new Subject_1.Subject();
         this.searchParameters = [];
-        this.list = [];
+        this.dynamicIngredientList = [];
     }
     ngOnInit() {
         this.searchInput = document.querySelector('#search-box');
@@ -29,8 +29,8 @@ let RecSearchComp = class RecSearchComp {
     }
     search(term, keyPressed) {
         this.searchTerms.next(term);
-        if (keyPressed == 13 && this.list[0])
-            this.searchRecipes(this.list[0]);
+        if (keyPressed == 13 && this.dynamicIngredientList[0])
+            this.searchRecipes(this.dynamicIngredientList[0]);
     }
     autoSuggester() {
         this.autoSuggest = this.searchTerms
@@ -46,9 +46,9 @@ let RecSearchComp = class RecSearchComp {
         this.autoSuggest.subscribe(result => { this.autoSelect(result); });
     }
     autoSelect(list) {
-        this.list = list;
-        if (this.list.length == 1)
-            this.searchRecipes(this.list[0]);
+        this.dynamicIngredientList = list;
+        if (this.dynamicIngredientList.length == 1)
+            this.searchRecipes(this.dynamicIngredientList[0]);
     }
     searchRecipes(ingredient) {
         let searchString = this.formatSearch(ingredient);
@@ -56,9 +56,6 @@ let RecSearchComp = class RecSearchComp {
         this.searchTerms.next('');
         this.searchInput.value = '';
         this.searchInput.focus();
-    }
-    getRecNames(searchString) {
-        this.recService.getRecBySearch(searchString).then(data => this.recipes = data);
     }
     formatSearch(ingredient) {
         let searchString = '';
@@ -70,11 +67,13 @@ let RecSearchComp = class RecSearchComp {
         }
         return searchString;
     }
+    getRecNames(searchString) {
+        this.recService.getRecBySearch(searchString).then(data => this.recipes = data);
+    }
     clear() {
         this.searchParameters.length = 0;
         this.recipes = [];
         this.searchInput.value = '';
-        this.searchInput.focus();
     }
 };
 RecSearchComp = __decorate([

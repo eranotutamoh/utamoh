@@ -5,10 +5,10 @@
     <p>{{recipe.instructions}}</p>
     <dl *ngFor="let ing of recipe.ingredients">
         <dt>{{ing.quantity}}</dt>
-        <dd>{{ing.name}} {{ing.method}}</dd>
+        <dd [innerHTML]="ing.name | ingredientFormat" > </dd>
+        <dd *ngIf="ing.method">({{ing.method}})</dd>
     </dl>
 </div>
-<button (click)="goBack()">Back</button>
 
 </section>
 <section class=right></section>

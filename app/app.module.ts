@@ -6,12 +6,15 @@ import { AppRoutingModule }   from './app-routing.module';
 import { HttpModule }    from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import {RecLinkComp}     from './component/recipelink.component';
+import { RecLinkComp }     from './component/recipelink.component';
 import { RecListComp }   from './component/recipes.component';
 import { RecSearchComp }   from './component/recipesearch.component';
 import { RecDetailComp }   from './component/recipedetail.component';
 import { RecFormComp }   from './component/recipeform.component';
 import { RecEditComp }   from './component/recipeedit.component';
+import { SetFocusDirective } from './directive/setFocus.directive';
+import { CapitalizeDirective } from './directive/capitilize.directive';
+import { IngredientFormat } from './pipes/utility.pipes';
 
 import { RecApiService } from './service/recipesapi.service';
 import { AutoSearchService } from './service/ingredientsuggest.service';
@@ -30,9 +33,12 @@ import { AutoSearchService } from './service/ingredientsuggest.service';
                     RecSearchComp,
                     RecDetailComp,
                     RecFormComp,
-                    RecEditComp ],
-    providers:    [RecApiService,
-                   AutoSearchService],
+                    RecEditComp,
+                    CapitalizeDirective,
+                    SetFocusDirective,
+                    IngredientFormat],
+    providers:    [ RecApiService,
+                    AutoSearchService],
     bootstrap:    [ AppComponent ]
 })
 
