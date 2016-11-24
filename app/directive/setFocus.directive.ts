@@ -13,7 +13,7 @@ export class SetFocusDirective {
         {
             this.elementRef.nativeElement.focus();
         } else {
-            this.elementRef.nativeElement.blur();
+            //this.elementRef.nativeElement.blur();
         }
     }
 

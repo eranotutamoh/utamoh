@@ -18,7 +18,6 @@ let SetFocusDirective = class SetFocusDirective {
             this.elementRef.nativeElement.focus();
         }
         else {
-            this.elementRef.nativeElement.blur();
         }
     }
 };
