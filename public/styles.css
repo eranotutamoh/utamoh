@@ -16,6 +16,8 @@ html {
     border-top: none;
     border-radius: 0 0 10px 10px;
     min-height: 630px;
+    overflow: auto;
+    position: relative;
 }
 nav, section {
     display: inline-block;
@@ -35,6 +37,57 @@ nav {
     padding: 0 15px 0 25px;
     width: 250px;
 }
+#loading {
+    animation: box 8s;
+    border: 2px solid brown;
+    height: 200px;
+    margin: 50px auto 0;
+    padding: 15px 0 25px 25px;
+    width: 120px;
+}
+@keyframes box {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+.loadText{
+    position: absolute;
+}
+.loadText.one{
+    animation: moveLeft 5s linear forwards;
+    top: 80px;
+}
+.loadText.two{
+    animation: moveRight 5s linear forwards;
+    top: 120px;
+}
+.loadText.three{
+    animation: moveLeft 5s linear forwards;
+    top: 160px;
+}
+.loadText.four{
+    animation: moveRight 5s linear forwards;
+    top: 200px;
+}
+@keyframes moveLeft {
+    from {
+        left: 390px
+    }
+    to {
+        left: 450px
+    }
+}
+@keyframes moveRight {
+    from {
+        left: 510px
+    }
+    to {
+        left: 450px
+    }
+}
 a {
     color: #4FF93E;
     text-decoration: none;
@@ -53,6 +106,9 @@ nav a:first-child, section p {
 input, textarea {
     display: block;
     margin: 5px 0;
+}
+textarea {
+    width: 355px;
 }
 input {
     z-index: 1;
@@ -119,11 +175,15 @@ form .ingredients {
     display: block;
 }
 input.wide {
-    width: 318px;
+    width: 208px;
+}
+.ingredients input.small {
+    width: 60px;
 }
 .ingredients input {
     display: inline-block;
     margin: 0 10px 10px;
+    width:145px;
 }
 .ingredients label {
     display: inline-block;
@@ -142,6 +202,7 @@ input.error {
 button[type='submit'] {
     background-color: green;
     color: white;
+    margin: 15px 0;
 }
 button[type='submit']:disabled {
      background-color: grey;
