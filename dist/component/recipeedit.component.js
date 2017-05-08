@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const recipesapi_service_1 = require('../service/recipesapi.service');
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const recipesapi_service_1 = require("../service/recipesapi.service");
 let RecEditComp = class RecEditComp {
     constructor(recNameService, route) {
         this.recNameService = recNameService;
@@ -30,8 +30,8 @@ RecEditComp = __decorate([
     core_1.Component({
         selector: 'recipe-edit',
         template: `<rec-form  *ngIf="recipe" [recipe]="recipe"></rec-form>`
-    }), 
-    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.ActivatedRoute])
+    }),
+    __metadata("design:paramtypes", [recipesapi_service_1.RecApiService, router_1.ActivatedRoute])
 ], RecEditComp);
 exports.RecEditComp = RecEditComp;
 //# sourceMappingURL=recipeedit.component.js.map

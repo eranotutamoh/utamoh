@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const Observable_1 = require('rxjs/Observable');
-const Subject_1 = require('rxjs/Subject');
-const ingredientsuggest_service_1 = require('../service/ingredientsuggest.service');
-const recipesapi_service_1 = require('../service/recipesapi.service');
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const Observable_1 = require("rxjs/Observable");
+const Subject_1 = require("rxjs/Subject");
+const ingredientsuggest_service_1 = require("../service/ingredientsuggest.service");
+const recipesapi_service_1 = require("../service/recipesapi.service");
 let RecSearchComp = class RecSearchComp {
     constructor(recService, autoSearchService, router) {
         this.recService = recService;
@@ -27,23 +27,27 @@ let RecSearchComp = class RecSearchComp {
         this.searchInput = document.querySelector('#search-box');
         this.autoSuggester();
     }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
     search(term, keyPressed) {
         this.searchTerms.next(term);
         if (keyPressed == 13 && this.dynamicIngredientList[0])
             this.searchRecipes(this.dynamicIngredientList[0]);
     }
     autoSuggester() {
-        this.autoSuggest = this.searchTerms
-            .debounceTime(300)
-            .distinctUntilChanged()
-            .switchMap(term => term
-            ? this.autoSearchService.ingredientSearch(term)
-            : Observable_1.Observable.of([]))
-            .catch(error => {
-            console.log(error);
-            return Observable_1.Observable.of([]);
-        });
-        this.autoSuggest.subscribe(result => { this.autoSelect(result); });
+        this.autoSuggest =
+            this.searchTerms
+                .debounceTime(300)
+                .distinctUntilChanged()
+                .switchMap(term => term
+                ? this.autoSearchService.ingredientSearch(term)
+                : Observable_1.Observable.of([]))
+                .catch(error => {
+                console.log(error);
+                return Observable_1.Observable.of([]);
+            });
+        this.subscription = this.autoSuggest.subscribe(result => this.autoSelect(result));
     }
     autoSelect(list) {
         this.dynamicIngredientList = list;
@@ -80,8 +84,8 @@ RecSearchComp = __decorate([
     core_1.Component({
         selector: 'rec-search',
         templateUrl: `html/search.html`
-    }), 
-    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, ingredientsuggest_service_1.AutoSearchService, router_1.Router])
+    }),
+    __metadata("design:paramtypes", [recipesapi_service_1.RecApiService, ingredientsuggest_service_1.AutoSearchService, router_1.Router])
 ], RecSearchComp);
 exports.RecSearchComp = RecSearchComp;
 //# sourceMappingURL=recipesearch.component.js.map

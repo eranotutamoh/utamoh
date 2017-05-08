@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 import { AutoSearchService } from '../service/ingredientsuggest.service';
 import { RecApiService } from '../service/recipesapi.service';
 import {RecName}  from '../abstract/recipename';
@@ -15,6 +16,7 @@ export class RecSearchComp implements OnInit {
 
     autoSuggest: Observable<string[]>;
     private searchTerms = new Subject<string>();
+    private subscription: Subscription;
     private recipes:  RecName[];
     private searchParameters =  [];
     private searchInput;
@@ -26,13 +28,17 @@ export class RecSearchComp implements OnInit {
         this.searchInput = document.querySelector('#search-box');
         this.autoSuggester();
     }
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+    }
 
     search(term: string, keyPressed): void {
         this.searchTerms.next(term);
         if(keyPressed == 13 && this.dynamicIngredientList[0])   this.searchRecipes(this.dynamicIngredientList[0]);
     }
     autoSuggester() {
-        this.autoSuggest = this.searchTerms
+        this.autoSuggest =
+            this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
             .switchMap(term => term
@@ -42,7 +48,8 @@ export class RecSearchComp implements OnInit {
                 console.log(error);
                 return Observable.of<string[]>([]);
             });
-        this.autoSuggest.subscribe(result => { this.autoSelect(result)});
+
+        this.subscription = this.autoSuggest.subscribe(result => this.autoSelect(result));
     }
     autoSelect(list) {
             this.dynamicIngredientList = list;

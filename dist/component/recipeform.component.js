@@ -8,14 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const recipedetail_1 = require('../abstract/recipedetail');
-const ingredients_1 = require('../abstract/ingredients');
-const router_1 = require('@angular/router');
-const Observable_1 = require('rxjs/Observable');
-const Subject_1 = require('rxjs/Subject');
-const ingredientsuggest_service_1 = require('../service/ingredientsuggest.service');
-const recipesapi_service_1 = require('../service/recipesapi.service');
+const core_1 = require("@angular/core");
+const recipedetail_1 = require("../abstract/recipedetail");
+const ingredients_1 = require("../abstract/ingredients");
+const router_1 = require("@angular/router");
+const Observable_1 = require("rxjs/Observable");
+const Subject_1 = require("rxjs/Subject");
+const ingredientsuggest_service_1 = require("../service/ingredientsuggest.service");
+const recipesapi_service_1 = require("../service/recipesapi.service");
 let RecFormComp = class RecFormComp {
     constructor(recService, router, autoSearchService) {
         this.recService = recService;
@@ -106,15 +106,15 @@ let RecFormComp = class RecFormComp {
     }
 };
 __decorate([
-    core_1.Input(), 
-    __metadata('design:type', recipedetail_1.RecDetail)
+    core_1.Input(),
+    __metadata("design:type", recipedetail_1.RecDetail)
 ], RecFormComp.prototype, "recipe", void 0);
 RecFormComp = __decorate([
     core_1.Component({
         selector: 'rec-form',
         templateUrl: 'html/recipeform.html'
-    }), 
-    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.Router, ingredientsuggest_service_1.AutoSearchService])
+    }),
+    __metadata("design:paramtypes", [recipesapi_service_1.RecApiService, router_1.Router, ingredientsuggest_service_1.AutoSearchService])
 ], RecFormComp);
 exports.RecFormComp = RecFormComp;
 //# sourceMappingURL=recipeform.component.js.map

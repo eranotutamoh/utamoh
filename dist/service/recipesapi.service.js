@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
+const core_1 = require("@angular/core");
+const http_1 = require("@angular/http");
+require("rxjs/add/operator/toPromise");
 let RecApiService = class RecApiService {
     constructor(http) {
         this.http = http;
@@ -68,8 +68,8 @@ let RecApiService = class RecApiService {
     }
 };
 RecApiService = __decorate([
-    core_1.Injectable(), 
-    __metadata('design:paramtypes', [http_1.Http])
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
 ], RecApiService);
 exports.RecApiService = RecApiService;
 //# sourceMappingURL=recipesapi.service.js.map

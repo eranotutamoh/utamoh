@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const common_1 = require('@angular/common');
-const recipesapi_service_1 = require('../service/recipesapi.service');
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const common_1 = require("@angular/common");
+const recipesapi_service_1 = require("../service/recipesapi.service");
 let RecDetailComp = class RecDetailComp {
     constructor(recNameService, route, location) {
         this.recNameService = recNameService;
@@ -33,8 +33,8 @@ RecDetailComp = __decorate([
     core_1.Component({
         selector: 'recipe',
         templateUrl: 'html/recipedetail.html',
-    }), 
-    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.ActivatedRoute, common_1.Location])
+    }),
+    __metadata("design:paramtypes", [recipesapi_service_1.RecApiService, router_1.ActivatedRoute, common_1.Location])
 ], RecDetailComp);
 exports.RecDetailComp = RecDetailComp;
 //# sourceMappingURL=recipedetail.component.js.map

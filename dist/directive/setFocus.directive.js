@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
+const core_1 = require("@angular/core");
 let SetFocusDirective = class SetFocusDirective {
     constructor(elementRef) {
         this.elementRef = elementRef;
@@ -22,12 +22,12 @@ let SetFocusDirective = class SetFocusDirective {
     }
 };
 __decorate([
-    core_1.Input("hasFocus"), 
-    __metadata('design:type', Boolean)
+    core_1.Input("hasFocus"),
+    __metadata("design:type", Boolean)
 ], SetFocusDirective.prototype, "hasFocus", void 0);
 SetFocusDirective = __decorate([
-    core_1.Directive({ selector: '[hasFocus]' }), 
-    __metadata('design:paramtypes', [core_1.ElementRef])
+    core_1.Directive({ selector: '[hasFocus]' }),
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], SetFocusDirective);
 exports.SetFocusDirective = SetFocusDirective;
 //# sourceMappingURL=setFocus.directive.js.map

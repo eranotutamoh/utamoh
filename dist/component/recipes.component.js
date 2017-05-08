@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const recipesapi_service_1 = require('../service/recipesapi.service');
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const recipesapi_service_1 = require("../service/recipesapi.service");
 let RecListComp = class RecListComp {
     constructor(recService, router) {
         this.recService = recService;
@@ -44,8 +44,8 @@ RecListComp = __decorate([
       background-color: greenyellow !important;
       color: white;
     } `],
-    }), 
-    __metadata('design:paramtypes', [recipesapi_service_1.RecApiService, router_1.Router])
+    }),
+    __metadata("design:paramtypes", [recipesapi_service_1.RecApiService, router_1.Router])
 ], RecListComp);
 exports.RecListComp = RecListComp;
 //# sourceMappingURL=recipes.component.js.map

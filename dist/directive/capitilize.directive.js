@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const forms_1 = require('@angular/forms');
+const core_1 = require("@angular/core");
+const forms_1 = require("@angular/forms");
 let CapitalizeDirective = class CapitalizeDirective {
     constructor(model) {
         this.model = model;
@@ -26,8 +26,8 @@ CapitalizeDirective = __decorate([
         host: {
             '(ngModelChange)': 'onInputChange($event)'
         }
-    }), 
-    __metadata('design:paramtypes', [forms_1.NgModel])
+    }),
+    __metadata("design:paramtypes", [forms_1.NgModel])
 ], CapitalizeDirective);
 exports.CapitalizeDirective = CapitalizeDirective;
 //# sourceMappingURL=capitilize.directive.js.map

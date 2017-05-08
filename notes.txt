@@ -1,3 +1,18 @@
+CLI:
+Shell 1 npm start (starts typescript transpiler)
+Shell 2 node bin/www  (server)
+
+tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es6",   //dev setting for no Webstorm errors
+    // change to es5 to compile to dist folder code that ok in ipad (and all other browsers)
+
+code/recipe - develop
+code/recipe-deploy - copy here commit and push (git push recipe master)
+
+
+
 {
   "name": "recipe",
   "version": "1.0.0",
