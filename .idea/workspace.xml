@@ -2,48 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7599887-68e4-4dd1-a41f-68d4ad3ebdc0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/test.spec.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/component/recipelink.component.ts" afterPath="$PROJECT_DIR$/app/component/recipelink.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/component/recipesearch.component.ts" afterPath="$PROJECT_DIR$/app/component/recipesearch.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/service/ingredientsuggest.service.ts" afterPath="$PROJECT_DIR$/app/service/ingredientsuggest.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/abstract/ingredients.js.map" afterPath="$PROJECT_DIR$/dist/abstract/ingredients.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/abstract/recipedetail.js.map" afterPath="$PROJECT_DIR$/dist/abstract/recipedetail.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/abstract/recipename.js.map" afterPath="$PROJECT_DIR$/dist/abstract/recipename.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app-routing.module.js" afterPath="$PROJECT_DIR$/dist/app-routing.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app-routing.module.js.map" afterPath="$PROJECT_DIR$/dist/app-routing.module.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app.component.js" afterPath="$PROJECT_DIR$/dist/app.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app.component.js.map" afterPath="$PROJECT_DIR$/dist/app.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app.module.js" afterPath="$PROJECT_DIR$/dist/app.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app.module.js.map" afterPath="$PROJECT_DIR$/dist/app.module.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipedetail.component.js" afterPath="$PROJECT_DIR$/dist/component/recipedetail.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipedetail.component.js.map" afterPath="$PROJECT_DIR$/dist/component/recipedetail.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipeedit.component.js" afterPath="$PROJECT_DIR$/dist/component/recipeedit.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipeedit.component.js.map" afterPath="$PROJECT_DIR$/dist/component/recipeedit.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipeform.component.js" afterPath="$PROJECT_DIR$/dist/component/recipeform.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipeform.component.js.map" afterPath="$PROJECT_DIR$/dist/component/recipeform.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipelink.component.js" afterPath="$PROJECT_DIR$/dist/component/recipelink.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipelink.component.js.map" afterPath="$PROJECT_DIR$/dist/component/recipelink.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipes.component.js" afterPath="$PROJECT_DIR$/dist/component/recipes.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipes.component.js.map" afterPath="$PROJECT_DIR$/dist/component/recipes.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipesearch.component.js" afterPath="$PROJECT_DIR$/dist/component/recipesearch.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/component/recipesearch.component.js.map" afterPath="$PROJECT_DIR$/dist/component/recipesearch.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/directive/capitilize.directive.js" afterPath="$PROJECT_DIR$/dist/directive/capitilize.directive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/directive/capitilize.directive.js.map" afterPath="$PROJECT_DIR$/dist/directive/capitilize.directive.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/directive/setFocus.directive.js" afterPath="$PROJECT_DIR$/dist/directive/setFocus.directive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/directive/setFocus.directive.js.map" afterPath="$PROJECT_DIR$/dist/directive/setFocus.directive.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/main.js" afterPath="$PROJECT_DIR$/dist/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/main.js.map" afterPath="$PROJECT_DIR$/dist/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pipes/utility.pipes.js" afterPath="$PROJECT_DIR$/dist/pipes/utility.pipes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pipes/utility.pipes.js.map" afterPath="$PROJECT_DIR$/dist/pipes/utility.pipes.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/rxjs-ext.js" afterPath="$PROJECT_DIR$/dist/rxjs-ext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/rxjs-ext.js.map" afterPath="$PROJECT_DIR$/dist/rxjs-ext.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/service/ingredientsuggest.service.js" afterPath="$PROJECT_DIR$/dist/service/ingredientsuggest.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/service/ingredientsuggest.service.js.map" afterPath="$PROJECT_DIR$/dist/service/ingredientsuggest.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/service/recipesapi.service.js" afterPath="$PROJECT_DIR$/dist/service/recipesapi.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/service/recipesapi.service.js.map" afterPath="$PROJECT_DIR$/dist/service/recipesapi.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notes.txt" afterPath="$PROJECT_DIR$/notes.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/test.spec.ts" afterPath="$PROJECT_DIR$/app/test.spec.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/service/another.spec.js" afterPath="$PROJECT_DIR$/dist/service/another.spec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/test.spec.js" afterPath="$PROJECT_DIR$/dist/test.spec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/test.spec.js.map" afterPath="$PROJECT_DIR$/dist/test.spec.js.map" />
     </list>
     <ignored path="recipe.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,22 +26,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="notes.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes.txt">
+      <file leaf-file-name="ingredientsuggest.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/service/ingredientsuggest.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="150">
+              <caret line="12" column="66" lean-forward="false" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="another.spec.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="recipesearch.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/component/recipesearch.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="573">
+              <caret line="47" column="35" lean-forward="true" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="another.spec.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/service/another.spec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-              <folding />
+              <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <marker date="1494271804000" expanded="true" signature="66:137" ph="{...}" />
+                <marker date="1494271804000" expanded="true" signature="95:133" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,12 +140,12 @@
         <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/karma.conf.js" />
         <option value="$PROJECT_DIR$/app/service/another.spec.ts" />
-        <option value="$PROJECT_DIR$/app/test.spec.ts" />
         <option value="$PROJECT_DIR$/app/service/ingredientsuggest.service.ts" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/html/recipeform.html" />
         <option value="$PROJECT_DIR$/app/component/recipesearch.component.ts" />
         <option value="$PROJECT_DIR$/dist/service/another.spec.js" />
+        <option value="$PROJECT_DIR$/app/test.spec.ts" />
       </list>
     </option>
   </component>
@@ -187,8 +167,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="4" />
     <option name="y" value="23" />
-    <option name="width" value="1680" />
+    <option name="width" value="1676" />
     <option name="height" value="1027" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -207,8 +188,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -231,7 +210,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -245,7 +224,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -253,8 +232,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recipe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recipe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -466,7 +465,8 @@
       <workItem from="1491930330706" duration="320000" />
       <workItem from="1493589841627" duration="3739000" />
       <workItem from="1493672961088" duration="105000" />
-      <workItem from="1494193103037" duration="6834000" />
+      <workItem from="1494193103037" duration="8081000" />
+      <workItem from="1494267940463" duration="162000" />
     </task>
     <task id="LOCAL-00001" summary="'Fromwebstorm'">
       <created>1460575482250</created>
@@ -508,7 +508,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243151000" />
+    <option name="totallyTimeSpent" value="244560000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -520,21 +520,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <frame x="4" y="23" width="1676" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17433155" sideWeight="0.4858006" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.225" sideWeight="0.74367434" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17124104" sideWeight="0.74367434" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18181819" sideWeight="0.5141994" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.4858006" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.110160425" sideWeight="0.49788263" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24954683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27171314" sideWeight="0.25632563" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39979124" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27171314" sideWeight="0.25632563" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17540108" sideWeight="0.4854981" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -542,6 +541,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.4858006" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -584,7 +584,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/mocknames.ts" />
     <entry file="file://$PROJECT_DIR$/../recipe-old/app_server/controllers/recipe.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -843,7 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="24" column="70" lean-forward="false" selection-start-line="24" selection-start-column="70" selection-end-line="24" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -871,49 +869,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/test.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="51" column="24" lean-forward="false" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/component/recipesearch.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="51" column="90" lean-forward="true" selection-start-line="51" selection-start-column="90" selection-end-line="51" selection-end-column="90" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/service/ingredientsuggest.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="66" lean-forward="false" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -921,7 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -929,7 +887,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../recipe-deploy/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -937,15 +901,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/test.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/service/another.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
+          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <marker date="1494271804000" expanded="true" signature="66:137" ph="{...}" />
+            <marker date="1494271804000" expanded="true" signature="95:133" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/service/ingredientsuggest.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="66" lean-forward="false" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/component/recipesearch.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="47" column="35" lean-forward="true" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
