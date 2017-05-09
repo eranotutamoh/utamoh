@@ -10,8 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
-const Observable_1 = require("rxjs/Observable");
-const Subject_1 = require("rxjs/Subject");
 const ingredientsuggest_service_1 = require("../service/ingredientsuggest.service");
 const recipesapi_service_1 = require("../service/recipesapi.service");
 let RecSearchComp = class RecSearchComp {
@@ -19,35 +17,21 @@ let RecSearchComp = class RecSearchComp {
         this.recService = recService;
         this.autoSearchService = autoSearchService;
         this.router = router;
-        this.searchTerms = new Subject_1.Subject();
         this.searchParameters = [];
         this.dynamicIngredientList = [];
     }
     ngOnInit() {
         this.searchInput = document.querySelector('#search-box');
-        this.autoSuggester();
+        this.autoSuggest = this.autoSearchService.suggestedIngredients();
+        this.subscription = this.autoSuggest.subscribe(result => this.autoSelect(result));
     }
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
     search(term, keyPressed) {
-        this.searchTerms.next(term);
+        this.autoSearchService.next(term);
         if (keyPressed == 13 && this.dynamicIngredientList[0])
             this.searchRecipes(this.dynamicIngredientList[0]);
-    }
-    autoSuggester() {
-        this.autoSuggest =
-            this.searchTerms
-                .debounceTime(300)
-                .distinctUntilChanged()
-                .switchMap(term => term
-                ? this.autoSearchService.ingredientSearch(term)
-                : Observable_1.Observable.of([]))
-                .catch(error => {
-                console.log(error);
-                return Observable_1.Observable.of([]);
-            });
-        this.subscription = this.autoSuggest.subscribe(result => this.autoSelect(result));
     }
     autoSelect(list) {
         this.dynamicIngredientList = list;
@@ -57,7 +41,7 @@ let RecSearchComp = class RecSearchComp {
     searchRecipes(ingredient) {
         let searchString = this.formatSearch(ingredient);
         this.getRecNames(searchString);
-        this.searchTerms.next('');
+        this.autoSearchService.next('');
         this.searchInput.value = '';
         this.searchInput.focus();
     }

@@ -3,7 +3,7 @@ import {RecDetail}  from '../abstract/recipedetail';
 import {Ingredients}  from '../abstract/ingredients';
 import { Router } from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
-import { Subject }           from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 import { AutoSearchService } from '../service/ingredientsuggest.service';
 import { RecApiService } from '../service/recipesapi.service';
 
@@ -17,7 +17,7 @@ export class RecFormComp {
     @Input() recipe: RecDetail;
 
     private autoSuggest: Observable<string[]>;
-    private searchTerms = new Subject<string>();
+    private subscription: Subscription;
     private model: RecDetail;
     private submitted = false;
     private dynamicIngredientList = [];
@@ -30,37 +30,25 @@ export class RecFormComp {
     ngOnInit(): void {
         this.model = this.recipe || this.newRecipe();
         this.resetFocus();
-        this.autoSuggester();
+        this.autoSuggest = this.autoSearchService.suggestedIngredients();
+        this.subscription = this.autoSuggest.subscribe(result => { this.dynamicIngredientList = result });
         this.listUl = document.querySelector('#ingredients-ul');
     }
 
     prepareSearch(target, index) {
-        this.searchTerms.next('');
+        this.autoSearchService.next('');
         this.listUl.style.top = target.offsetTop + 6 + 'px';
         this.listUl.style.left = target.offsetLeft + 'px';
         this.ingIndex = index;
     }
     search(event): void {
-        this.searchTerms.next(this.model.ingredients[this.ingIndex].name);
+        this.autoSearchService.next(this.model.ingredients[this.ingIndex].name);
         if (event.keyCode == 13 && this.dynamicIngredientList[0]) this.completeSearch(this.dynamicIngredientList[0]);
     }
     completeSearch(ing) {
         this.model.ingredients[this.ingIndex].name = ing;
         this.focused[this.ingIndex] = [false,true];
-        this.searchTerms.next('');
-    }
-    autoSuggester(): void {
-        this.autoSuggest = this.searchTerms
-            .debounceTime(300)
-            .distinctUntilChanged()
-            .switchMap(term => term
-                ? this.autoSearchService.ingredientSearch(term)
-                : Observable.of<string[]>([]))
-            .catch(error => {
-                console.log(error);
-                return Observable.of<string[]>([]);
-            });
-        this.autoSuggest.subscribe(result => { this.dynamicIngredientList = result });
+        this.autoSearchService.next('');
     }
 
     addIngredient(): boolean {
@@ -70,7 +58,7 @@ export class RecFormComp {
     }
     removeIngredient(ix): void {
         this.model.ingredients.splice(ix, 1);
-        this.searchTerms.next('');
+        this.autoSearchService.next('');
         this.resetFocus();
         this.ingIndex = this.model.ingredients.length-1;
     };
@@ -95,7 +83,7 @@ export class RecFormComp {
         }
     }
     removeFocus(ix, el) {
-        this.searchTerms.next('');
+        this.autoSearchService.next('');
         if(this.focused[ix]) this.focused[ix][el] = false;
     }
     onSubmit() {

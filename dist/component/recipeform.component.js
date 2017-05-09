@@ -12,8 +12,6 @@ const core_1 = require("@angular/core");
 const recipedetail_1 = require("../abstract/recipedetail");
 const ingredients_1 = require("../abstract/ingredients");
 const router_1 = require("@angular/router");
-const Observable_1 = require("rxjs/Observable");
-const Subject_1 = require("rxjs/Subject");
 const ingredientsuggest_service_1 = require("../service/ingredientsuggest.service");
 const recipesapi_service_1 = require("../service/recipesapi.service");
 let RecFormComp = class RecFormComp {
@@ -21,7 +19,6 @@ let RecFormComp = class RecFormComp {
         this.recService = recService;
         this.router = router;
         this.autoSearchService = autoSearchService;
-        this.searchTerms = new Subject_1.Subject();
         this.submitted = false;
         this.dynamicIngredientList = [];
         this.ingIndex = 0;
@@ -29,37 +26,25 @@ let RecFormComp = class RecFormComp {
     ngOnInit() {
         this.model = this.recipe || this.newRecipe();
         this.resetFocus();
-        this.autoSuggester();
+        this.autoSuggest = this.autoSearchService.suggestedIngredients();
+        this.subscription = this.autoSuggest.subscribe(result => { this.dynamicIngredientList = result; });
         this.listUl = document.querySelector('#ingredients-ul');
     }
     prepareSearch(target, index) {
-        this.searchTerms.next('');
+        this.autoSearchService.next('');
         this.listUl.style.top = target.offsetTop + 6 + 'px';
         this.listUl.style.left = target.offsetLeft + 'px';
         this.ingIndex = index;
     }
     search(event) {
-        this.searchTerms.next(this.model.ingredients[this.ingIndex].name);
+        this.autoSearchService.next(this.model.ingredients[this.ingIndex].name);
         if (event.keyCode == 13 && this.dynamicIngredientList[0])
             this.completeSearch(this.dynamicIngredientList[0]);
     }
     completeSearch(ing) {
         this.model.ingredients[this.ingIndex].name = ing;
         this.focused[this.ingIndex] = [false, true];
-        this.searchTerms.next('');
-    }
-    autoSuggester() {
-        this.autoSuggest = this.searchTerms
-            .debounceTime(300)
-            .distinctUntilChanged()
-            .switchMap(term => term
-            ? this.autoSearchService.ingredientSearch(term)
-            : Observable_1.Observable.of([]))
-            .catch(error => {
-            console.log(error);
-            return Observable_1.Observable.of([]);
-        });
-        this.autoSuggest.subscribe(result => { this.dynamicIngredientList = result; });
+        this.autoSearchService.next('');
     }
     addIngredient() {
         this.focused.push([true, false]);
@@ -68,7 +53,7 @@ let RecFormComp = class RecFormComp {
     }
     removeIngredient(ix) {
         this.model.ingredients.splice(ix, 1);
-        this.searchTerms.next('');
+        this.autoSearchService.next('');
         this.resetFocus();
         this.ingIndex = this.model.ingredients.length - 1;
     }
@@ -93,7 +78,7 @@ let RecFormComp = class RecFormComp {
         }
     }
     removeFocus(ix, el) {
-        this.searchTerms.next('');
+        this.autoSearchService.next('');
         if (this.focused[ix])
             this.focused[ix][el] = false;
     }

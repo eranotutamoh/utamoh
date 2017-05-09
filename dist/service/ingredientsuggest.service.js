@@ -10,14 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require("@angular/core");
 const http_1 = require("@angular/http");
+const Observable_1 = require("rxjs/Observable");
+const Subject_1 = require("rxjs/Subject");
+// Return suggested list of ingredients given partial search string
 let AutoSearchService = class AutoSearchService {
     constructor(http) {
         this.http = http;
+        this.searchTerms = new Subject_1.Subject();
     }
     ingredientSearch(term) {
         return this.http
             .get(`api/ingredients?ing=${term}`)
             .map((r) => JSON.parse(r["_body"]));
+    }
+    suggestedIngredients() {
+        return this.searchTerms
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .switchMap(term => term
+            ? this.ingredientSearch(term)
+            : Observable_1.Observable.of([]))
+            .catch(error => {
+            console.log(error);
+            return Observable_1.Observable.of([]);
+        });
+    }
+    next(term) {
+        this.searchTerms.next(term);
     }
 };
 AutoSearchService = __decorate([

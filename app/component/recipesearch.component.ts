@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
-import { Subject }           from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { AutoSearchService } from '../service/ingredientsuggest.service';
 import { RecApiService } from '../service/recipesapi.service';
@@ -15,7 +14,6 @@ import {RecName}  from '../abstract/recipename';
 export class RecSearchComp implements OnInit {
 
     autoSuggest: Observable<string[]>;
-    private searchTerms = new Subject<string>();
     private subscription: Subscription;
     private recipes:  RecName[];
     private searchParameters =  [];
@@ -26,42 +24,28 @@ export class RecSearchComp implements OnInit {
 
     ngOnInit(): void {
         this.searchInput = document.querySelector('#search-box');
-        this.autoSuggester();
+        this.autoSuggest = this.autoSearchService.suggestedIngredients();
+        this.subscription = this.autoSuggest.subscribe(result => this.autoSelect(result));
     }
-    ngOnDestroy(): void {
+
+   ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 
     search(term: string, keyPressed): void {
-        this.searchTerms.next(term);
+        this.autoSearchService.next(term)
         if(keyPressed == 13 && this.dynamicIngredientList[0])   this.searchRecipes(this.dynamicIngredientList[0]);
     }
-    autoSuggester() {
-        this.autoSuggest =
-            this.searchTerms
-            .debounceTime(300)
-            .distinctUntilChanged()
-            .switchMap(term => term
-                ? this.autoSearchService.ingredientSearch(term)
-                : Observable.of<string[]>([]))
-            .catch(error => {
-                console.log(error);
-                return Observable.of<string[]>([]);
-            });
 
-        this.subscription = this.autoSuggest.subscribe(result => this.autoSelect(result));
-    }
     autoSelect(list) {
             this.dynamicIngredientList = list;
             if(this.dynamicIngredientList.length == 1)   this.searchRecipes(this.dynamicIngredientList[0]);
     }
 
-
-
     searchRecipes(ingredient): void {
         let searchString = this.formatSearch(ingredient);
         this.getRecNames(searchString);
-        this.searchTerms.next('');
+        this.autoSearchService.next('');
         this.searchInput.value = '';
         this.searchInput.focus();
     }
